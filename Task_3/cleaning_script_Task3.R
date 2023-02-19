@@ -21,3 +21,5 @@ seabirds_ships_data <- read_xls("raw_data/seabirds.xls", sheet = 1)
 
 seabirds_birds_data <- read_xls("raw_data/seabirds.xls", sheet = 2)
 
+
+
