@@ -1,0 +1,67 @@
+---
+title: "Birds Analysis"
+output: html_notebook
+---
+
+#Reading in clean data csv
+
+```{r}
+ships_birds_clean <- read_csv(here("clean_data/ships_birds_clean.csv"))
+  
+```
+
+
+#Which bird had the most individual sightings?
+
+```{r}
+ships_birds_clean %>% 
+  group_by(species_abbreviation) %>% 
+  summarise(individual_sightings = n_distinct(record_id)) %>% 
+  arrange(desc(individual_sightings)) %>% 
+  slice_max(individual_sightings, n = 1, with_ties = TRUE) %>% 
+  pull(species_abbreviation)
+  
+```
+
+DIOANTEXU was the most common species abbreviation, with 5632 individual 
+sightings. This abbreviation is representative of the "Wandering Albatross"
+
+
+
+#Which bird had the highest total count?
+
+
+```{r}
+ships_birds_clean %>% 
+  group_by(species_abbreviation) %>% 
+  summarise(total_count = sum(count)) %>% 
+  arrange(desc(total_count)) %>% 
+  slice_max(total_count, n = 1, with_ties = TRUE) %>% 
+  pull(species_abbreviation)
+```
+
+PUFTEN was the species abbreviation with the highest total count of sightings at 
+982553 total sightings. 
+PUFTEN is representative of the short-tailed shearwater species.
+
+
+#Which bird had the highest total count above a latitude of -30?
+
+```{r}
+ships_birds_clean %>% 
+  filter(lat > -30) %>% 
+  group_by(species_abbreviation) %>% 
+  summarise(total_count = sum(count)) %>% 
+  arrange(desc(total_count)) %>% 
+  slice_max(total_count, n = 1, with_ties = TRUE) 
+```
+
+The short-tailed shearwater was the species with the highest count of 
+observations above a latitude of -30, in total there were 30379 of the species
+spotted
+
+
+
+
+
+
