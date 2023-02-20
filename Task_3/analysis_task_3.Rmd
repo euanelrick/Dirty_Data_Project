@@ -6,6 +6,8 @@ output: html_notebook
 #Reading in clean data csv
 
 ```{r}
+here()
+
 ships_birds_clean <- read_csv(here("clean_data/ships_birds_clean.csv"))
   
 ```
@@ -56,9 +58,53 @@ ships_birds_clean %>%
   slice_max(total_count, n = 1, with_ties = TRUE) 
 ```
 
-The short-tailed shearwater was the species with the highest count of 
-observations above a latitude of -30, in total there were 30379 of the species
-spotted
+The wedge-tailed shearwater was the bird with the highest count above a 
+latitiude of -30 with a total count of 855
+
+
+
+
+#How many different types of birds were only ever seen in groups of 1?
+
+```{r}
+ships_birds_count_1 <- ships_birds_clean %>% 
+  filter(count == 1)
+
+
+ships_birds_greater_1 <- ships_birds_clean %>% 
+  filter(count > 1)
+
+
+ships_birds_count_1 %>% 
+  anti_join(ships_birds_greater_1, by = "species_abbreviation") %>% 
+  summarise(solo_species = n_distinct(species_abbreviation)) %>% 
+  pull()
+
+
+```
+
+In total there were 23 distinct species that were only ever seen in groups of 
+one
+
+
+# How many penguins were seen? 
+
+```{r}
+ships_birds_clean %>% 
+  filter(
+      str_detect(species_common_name_taxon_age_sex_plumage_phase, 
+                 "(?i)penguin") == TRUE) %>% 
+  summarise(total_count = sum(count)) %>% 
+  pull()
+
+```
+
+In total 158 penguins were observed
+
+
+
+
+
 
 
 

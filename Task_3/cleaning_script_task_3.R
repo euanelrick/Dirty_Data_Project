@@ -47,19 +47,20 @@ seabirds_ships_data <- clean_names(seabirds_ships_data)
 birds_trimmed <- seabirds_birds_data %>%  # Keeping 'useful' columns for analysis
   select(record, 
          record_id, 
+         species_common_name_taxon_age_sex_plumage_phase,
          species_abbreviation, 
          count)
 
 ships_trimmed <- seabirds_ships_data %>% # Keeping useful data, removing 
                                           # duplicate of record id
   
-  select(record, lat, long)
+  select(record_id, lat, long)
   
 
 # Joining data together ---------------------------------------------------
 
 ships_birds <- birds_trimmed %>% 
-  left_join(ships_trimmed, by = "record")
+  left_join(ships_trimmed, by = "record_id")
 
 
 
