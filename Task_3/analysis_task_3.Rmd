@@ -64,9 +64,15 @@ latitiude of -30 with a total count of 855
 
 
 
+
 #How many different types of birds were only ever seen in groups of 1?
 
 ```{r}
+
+ships_birds_clean %>% 
+  summarise(individual_species = n_distinct(species_abbreviation))
+
+
 ships_birds_count_1 <- ships_birds_clean %>% 
   filter(count == 1)
 
