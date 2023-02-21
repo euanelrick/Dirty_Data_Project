@@ -158,10 +158,10 @@ candy_2017_trimmed <-
                    "U S", "U.s.", "The United States Of America", 
                    "Usa? Hard To Tell Anymore..", "'Merica", "Pittsburgh",
                    "United State", "New York", "Trumpistan", "United Sates",
-                   "California", 
-                   "I Pretend To Be From Canada, But I Am Really From The United States.",
-                   "New Jersey", "United Stated", "United Statss", "Murrika",
-                   "N. America", "Ussa", "U S A", "United Statea", "Usa Usa Usa!!!!")
+                   "California", "I Pretend To Be From Canada, But I Am Really 
+                   From The United States.", "New Jersey", "United Stated", 
+                   "United Statss", "Murrika", "N. America", "Ussa", "U S A", 
+                   "United Statea", "Usa Usa Usa!!!!")
     == TRUE ~ "US",
     
     country %in% c("Canada", "Can", "Canada`") == TRUE ~ "Canada",

@@ -133,7 +133,7 @@ clean_candy %>%
   summarise(total_ratings = n())
 ```
 
-4849 people rated starburst as JOY
+1867 people rated starburst as DESPAIR
 
 
 
