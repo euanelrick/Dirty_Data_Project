@@ -74,13 +74,14 @@ candy_2015_trimmed <- candy_2015 %>%
 
 candy_2016_trimmed <- candy_2016 %>% 
   select(timestamp:york_peppermint_patties,
-         -your_gender,
+         your_gender,
          -which_state_province_county_do_you_live_in) %>% 
   rename(age = how_old_are_you,
          going_tot = are_you_going_actually_going_trick_or_treating_yourself,
          year = timestamp,
          country = which_country_do_you_live_in,
-         "100_grand_bar" = x100_grand_bar
+         "100_grand_bar" = x100_grand_bar,
+         gender = your_gender
   ) %>% 
   mutate(year = substr(year, 1, 4)) %>% 
   mutate(year = as.numeric(year)) %>% 
@@ -128,11 +129,11 @@ candy_2017_trimmed <- candy_2017 %>%
   mutate(year = as.numeric(year)) %>% 
   select(year:q6_york_peppermint_patties,
          -internal_id,
-         -q2_gender,
          -q5_state_province_county_etc) %>% 
   rename(going_tot = q1_going_out,
          age = q3_age,
-         country = q4_country) %>% 
+         country = q4_country,
+         gender = q2_gender) %>% 
   mutate(age = as.numeric(age)) %>% 
   filter(age <= 120) %>%
   relocate(age, .before = going_tot) %>% 
@@ -234,3 +235,9 @@ clean_candy <- clean_candy %>%
   
 
 
+# Writing clean data to a .csv file for analysis --------------------------
+
+
+here()
+
+write_csv(clean_candy, file = "clean_data/clean_candy.csv")
