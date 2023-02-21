@@ -2,6 +2,7 @@
 
 
 # Loading in packages -----------------------------------------------------
+library(naniar)
 
 library(tidyverse)
 
@@ -12,6 +13,7 @@ library(readxl)
 library(here)
 
 library(stringr)
+
 
 
 # Loading in data ---------------------------------------------------------
@@ -90,6 +92,36 @@ candy_2016_trimmed <- candy_2016 %>%
 
 
 
+# Cleaning country column for 2016 data -----------------------------------
+
+candy_2016_trimmed$country <-  str_to_title(candy_2016_trimmed$country)
+
+candy_2016_countries_trimmed <- candy_2016_trimmed %>% 
+  distinct(country)
+
+candy_2016_trimmed$country <-  str_replace_all(
+  candy_2016_trimmed$country, c("(?i)[a-z]*(?i)m+[a-z]*(rica)+" = "US",
+                                "^(?i)u+.*(?i)s+.*" = "US",
+                                "The Yoo Ess Of Aaayyyyyy" = "US",
+                                "Eua" = "US",
+                                ".*(?i)usa" = "US",
+                                "^U+.*(?i)k+.*" = "UK",
+                                "England" = "UK",
+                                "^Korea" = "South Korea",
+                                "España" = "Spain",
+                                "^Korea" = "South Korea",
+                                "^Netherlands" = "The Netherlands",
+                                "Neverland" = NA,
+                                "There Isn't One For Old Men" = NA,
+                                "God's Country" = NA,
+                                "The Republic Of Cascadia" = NA
+                                
+  ))
+
+
+
+
+
 
 # Cleaning candy_2017 -----------------------------------------------------
 
@@ -108,8 +140,24 @@ candy_2017_trimmed <- candy_2017 %>%
   pivot_longer(cols = q6_100_grand_bar:q6_york_peppermint_patties,
                names_to = "candy_type",
                values_to = "opinion") %>% 
-  filter(is.na(opinion) == FALSE)
-  
+  filter(is.na(opinion) == FALSE) %>% 
+  mutate(candy_type = str_remove(candy_type, "^(q6_)"))
+
+
+# Cleaning country column in 2017 data ------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
