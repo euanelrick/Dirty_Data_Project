@@ -1798,29 +1798,15 @@ missing values)</p>
 of rows</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShjbGVhbl9jYW5keSkpXG5gYGAifQ== -->
-<pre class="r"><code>colSums(is.na(clean_candy))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgeWVhciAgICAgICAgYWdlICBnb2luZ190b3QgICAgY291bnRyeSBjYW5keV90eXBlICAgIG9waW5pb24gICAgIGdlbmRlciBcbiAgICAgICAgIDAgICAgICAgICAgMCAgICAgICA0Njk0ICAgICAzNTg4ODMgICAgICAgICAgMCAgICAgICAgICAwICAgICAzNTkyMjAgXG4ifQ== -->
-<pre><code>      year        age  going_tot    country candy_type    opinion     gender 
-         0          0       4694     358883          0          0     359220 </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3Qob3BpbmlvbikgJT4lIFxuICBjb3VudCgpXG5gYGAifQ== -->
-<pre class="r"><code>clean_candy %&gt;% 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShjbGVhbl9jYW5keSkpXG5cblxuXG5jbGVhbl9jYW5keSAlPiUgXG4gIHNlbGVjdChvcGluaW9uKSAlPiUgXG4gIGNvdW50KClcblxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>colSums(is.na(clean_candy))
+
+
+
+clean_candy %&gt;% 
   select(opinion) %&gt;% 
-  count()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQMFFxQ01CUzlUVmNwRkVMZm9SQzkrQUhSQjBTUnIwdFhTYmFKVHVxeEw5ZnVoZ3ZaWUx1N2gzUE92ZWU0ejNaaEZnS0FCejRoNEZIOEFqMmZEbkVLaUdBekF4OENYVDlJMmhnQVlHWHFjcmc0SkNyWWk3ZjRpYVpLNGJDQ1JyNFR5OVJXNUl2UGdNZTF5eXZXdW5aaHdSUkxiZzNxc2VzZHlVTFdxcFFDUlVRdlM5MWRHZ2VJT3FFM0tlTDgwWWxudkUzMWhERWwvSk5PVTV1clo1Smg5S0tqMTV5TGV5bTRYYjVpVjE2TnpSb2ptOFJKM1pSQzJTaUl0b21TaWxsZW1NdktJaVljOUQrVUFuWFNwQUVBQUE9PSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]}],"data":[{"1":"589655"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbk5BXG5OQVxuYGBgIn0= -->
-<pre class="r"><code>NA
-NA
-NA</code></pre>
+  count()
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1829,21 +1815,12 @@ NA</code></pre>
 treating?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIlllc1wiKSAlPiUgXG4gIHN1bW1hcmlzZShhdmVyYWdlX2FnZSA9IG1lYW4oYWdlKSlcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIlllc1wiKSAlPiUgXG4gIHN1bW1hcmlzZShhdmVyYWdlX2FnZSA9IG1lYW4oYWdlKSlcblxuXG5cbmNsZWFuX2NhbmR5ICU+JSBcbiAgc2VsZWN0KGdvaW5nX3RvdCwgYWdlKSAlPiUgXG4gIGZpbHRlcihnb2luZ190b3QgPT0gXCJZZXNcIikgJT4lIFxuICBzdW1tYXJpc2UoYXZlcmFnZV9hZ2UgPSBtZWRpYW4oYWdlKSlcbmBgYCJ9 -->
 <pre class="r"><code>clean_candy %&gt;% 
   select(going_tot, age) %&gt;% 
   filter(going_tot == &quot;Yes&quot;) %&gt;% 
-  summarise(average_age = mean(age))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQU3dyQ01CQ2Rwa2F4b2dpZW93VnhvenNGOFFDaTRFNWlqVnFzaWFUeHMzUWxlQ1N2NUNIVVNVbWdKRENabWNkN00vUG0wOVVnV2tVQUVFS05FQWdwbGtDWGkxazhCRVN3Q2FBR1RaUHZTT3FWQUVESDVQSGsvWG9PUHFGSHBJS2RlSUZGdHdLMjJKVXJ0dWRyREkvZlZQS1dPRTBiZ3p6dysrSHpCNmM1Sy96QjBaWnBsdXdVNnJIN2VwS0dQT3RNQ2hRUmN6cjF4SUh5Z081Rm1FdTJjWHE0aUdQY0g1a04xalBZOHdJYmxkcnNKRDg3aTlwWmRTNzJtZUR1K0p4dGVHNmJEbG91SFNkbmxRbnRyQ0JhSkZwcTVuaFJLbk9IbE9iZyt3ZFBxeUhvc2dFQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["average_age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"35.44951"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cblxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIlllc1wiKSAlPiUgXG4gIHN1bW1hcmlzZShhdmVyYWdlX2FnZSA9IG1lZGlhbihhZ2UpKVxuYGBgIn0= -->
-<pre class="r"><code>
+  summarise(average_age = mean(age))
+
 
 
 clean_candy %&gt;% 
@@ -1851,13 +1828,6 @@ clean_candy %&gt;%
   filter(going_tot == &quot;Yes&quot;) %&gt;% 
   summarise(average_age = median(age))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQMndyQ01Bek5xbFUyY1F6OGpnM0VGMzBURkQ5QUZIeVR1dFU1bksxMDlmTG9sNnZwYUVGYlNKTWN6a2x5MXN2ZEpOcEZBTkNCTGlIUW9WZ0MzVzVXNlJRUXdTYUFMb1FtUDVFMGFnR0EyT1Q1QXV6N0kxTEJMcnpCSXZrQkIrek9GU3Y1SHNQamgwbytNcWNaWXBBWGZoOTgvdUM4Wm8wL09DcVladGxSb1I2N3R5ZnB5NnV1cEVBUk1hZFRUeHdvRDBodXdseFNwUG5wSnM3cGVHWTJXTTlnend0cy9OUm1KL25ZV2RUTzZuRlJWb0s3NDJ0MjRMVnRZclRjT3M2dXFoTGFXVUcweWJUVXpQR2lYTllPYWMzQit3dUZHQ3Bmc2dFQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["average_age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"38"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The mean age of those going trick or treating was 35.4 years. The
@@ -1866,21 +1836,12 @@ median age was 38</p>
 treating?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIk5vXCIpICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfYWdlID0gbWVhbihhZ2UpKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIk5vXCIpICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfYWdlID0gbWVhbihhZ2UpKVxuXG5cblxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIk5vXCIpICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfYWdlID0gbWVkaWFuKGFnZSkpXG5gYGAifQ== -->
 <pre class="r"><code>clean_candy %&gt;% 
   select(going_tot, age) %&gt;% 
   filter(going_tot == &quot;No&quot;) %&gt;% 
-  summarise(average_age = mean(age))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQU3dvQ01Rek5WS3M0b2dpZVl3YlJqVXRCOFFDaTRFN3FXSFd3dHRLcG42V1hjT2xLOEpocU9yUWdMYVJKSHU4bGViUEpjaEF2WXdDb1FKVVFxRkFzZ1M3bTAyUUlpR0FUUVJVYU50K1ExQzBCZ0xiTm8vSHIrUkQ3ZDBDa2toMTVnVVhuRDJ5eUM5ZHN4MWNZQWIraDFUWDFtaFlHdWVQM3hSY096Z1Fyd3NIeGhobVdialhxc2ZzRWtybzZtVnhKRkJGN09nM0VrUTZBemxuYVN6Wkp0ai9MUTlMdjJRM09NN2p6SWhkL3RkMUp2bTRXZGJOcVhPNXl5ZjN4Z3EyNWNFMGJMWmVPMDVQT3BmRldFQzFTb3d6enZEaFR3aU9sT2ZqOEFFVEpJWVN5QVFBQSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["average_age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"39.27825"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cblxuY2xlYW5fY2FuZHkgJT4lIFxuICBzZWxlY3QoZ29pbmdfdG90LCBhZ2UpICU+JSBcbiAgZmlsdGVyKGdvaW5nX3RvdCA9PSBcIk5vXCIpICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfYWdlID0gbWVkaWFuKGFnZSkpXG5gYGAifQ== -->
-<pre class="r"><code>
+  summarise(average_age = mean(age))
+
 
 
 clean_candy %&gt;% 
@@ -1888,13 +1849,6 @@ clean_candy %&gt;%
   filter(going_tot == &quot;No&quot;) %&gt;% 
   summarise(average_age = median(age))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQMndyQ01Bek5xbFUyY1F6OGpnM1JGeDhGeFE4UUJkK2tiblVPWnl0ZHZUejY1V282V3RBVzBpU0hjNUtjOVhJM2pYWVJBSFNnU3doMEtKWkF0NXRWT2dORXNBbWdDNkhKVHlTTldnQWdObm0rQVB2K2lGU3dDMit3U0g3QUFidHp4VXEreC9ENG9aS1B6R21HR09TRjN3ZWZQeml2V2VNUGpncW1XWFpVcU1mdTdVbjY4cW9yS1ZCRXpPblVFd2ZLQTVLYk1KY1VhWDY2aVhNNkdac04xalBZOHdJYlA3WFpTVDUyRnJXemVseVVsZUR1K0pvZGVHMmJHQzIzanJPcnFvUjJWaEJ0TWkwMWM3d29sN1ZEV25Qdy9nSStBUk0wc2dFQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["average_age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"38"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The mean age of those who weren’t going trick or treating is 39.3 The
@@ -1904,37 +1858,37 @@ median age was 38</p>
 of these ratings?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRd1lyQ01CQWRvM0d4ckNMNEYwSUx1cGY5Z0dVL1FCUzhsZGhtdFpnbUpVbFp2WG4xcDlWSlRFVVNTREx6WnQ3TXZGbjliTCtTYlFJQWZSZ1FBbjJLSnRETitqZjlCa1RRNmNFQVJ1NC9ZZElNRFFkTzN3S2ZtdTlid1hSZTU3VkJmK3hqTUw5R0JhaGtOVGVCVEFLWUZFeVc1OXllRzk2bEZhcVZOdUtPdFByUE9yNXJRQzc0M1BIRVRRckJqSWttVEVwbVdmYW5rWS9lTGFKOHFNWldTaUtKT0hrMEl2ZDBCRXhiNlNZcDArTFF5bU82WExnT1Q4MytCUDMrZGpaNTlpVDNVSXVHV2tNdTk1VjhTUmRzeDBWd0ppalpLODRhWGVGQ2doUkVUV2FWWmVLMVFTVTZ4SXVEMndNczFncXYxZ0VBQUE9PSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["candy_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"regular_m_ms","2":"10889"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBmaWx0ZXIob3BpbmlvbiA9PSBcIkpPWVwiKSAlPiUgXG4gIGdyb3VwX2J5KGNhbmR5X3R5cGUpICU+JSBcbiAgc3VtbWFyaXNlKGNvdW50ID0gbigpKSAlPiUgXG4gIHNsaWNlX21heChjb3VudCwgd2l0aF90aWVzID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>clean_candy %&gt;% 
+  filter(opinion == &quot;JOY&quot;) %&gt;% 
+  group_by(candy_type) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  slice_max(count, with_ties = TRUE)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>It was regular m&amp;ms which received the most joy ratings</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRVVc3Q01BdzFnWUNvTklURUNUaEErOEYrZG9DSkF5QW04WWV5Tk5CdW1WT2xxVWIvZG5LWUUxS0VFaW1KL2V4biszbjNmbmpORGhrQWpHSENHSXc1bWNBLzl0djhEUWdoWndRVG1Qdi9Ra2tyTWp5NGZBcThmQm10KzZNVktDdGxQUkNDc0Y0a0ZUaUtIOVZHTm90Z0pnV1cvZEgxalJyU3BPblFKZHk1TmIvRndQY04yQjg5TnpwcEU2bEYyeVlqWnFWd29qaFo0cE4zVFNnejA3amFJSkdZMThjVDhzZ213TEpEUDBtWnk2ckQ3M3l6OFIzdW1zT0orc01kYkhidnlXNnhGbysxcGdyUE5UNmthL0dwZEhRV0pEa29MaHBiMDBLaUZFTGJ3aGtuOUdPRFJnOUlFQWZYZnpTRnFhWFhBUUFBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["candy_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"jolly_rancher","2":"8462"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBmaWx0ZXIob3BpbmlvbiA9PSBcIkRFU1BBSVJcIikgJT4lIFxuICBncm91cF9ieShjYW5keV90eXBlKSAlPiUgXG4gIHN1bW1hcmlzZShjb3VudCA9IG4oKSkgJT4lIFxuICBzbGljZV9tYXgoY291bnQsIHdpdGhfdGllcyA9IFRSVUUpXG5gYGAifQ== -->
+<pre class="r"><code>clean_candy %&gt;% 
+  filter(opinion == &quot;DESPAIR&quot;) %&gt;% 
+  group_by(candy_type) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  slice_max(count, with_ties = TRUE)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>It was jolly ranchers which received the most despair ratings</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRUzQ3Q01BdzFnUXlpQXNSb3p0RXVZTU1CRUFjWWdjU3VDbTBHS3RLa1NsSUJ1N2s0SHlla0NDVlNFdnZaei9iejcycTNTSFlKQVBSaFFBajBLWnBBdDV0MXVnUkUwT25CQUVidXYyRFNEeG9PbkgwRXhwb2ZXc0YwWHVlMVFYL2lZL0I5aXdwUXlXcHVBcGtFTUNtWUxLKzV2VGE4U3l0VUsyM0VIV2wxempxK2EwRCs4WG5naVpzVWdoa1RUWmlVekxMc1R5TWZ2WHRFR2FyR1Zrb2lpVGg1TkNMM2RBVE1XdWttS2RQaTJNcFRPbCs0RGkvTi9nVDkvblkyZWZVa2oxQ0xobHBmWEI0cStaWXUySjZMNEV4UnNsZWNOYnJDaFFRcGlKck1Lc3ZFZTROS2RJZ1hCL2NuMW9jd1B0WUJBQUE9In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["candy_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"regular_m_ms","2":"4605"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xlYW5fY2FuZHkgJT4lIFxuICBmaWx0ZXIob3BpbmlvbiA9PSBcIk1FSFwiKSAlPiUgXG4gIGdyb3VwX2J5KGNhbmR5X3R5cGUpICU+JSBcbiAgc3VtbWFyaXNlKGNvdW50ID0gbigpKSAlPiUgXG4gIHNsaWNlX21heChjb3VudCwgd2l0aF90aWVzID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>clean_candy %&gt;% 
+  filter(opinion == &quot;MEH&quot;) %&gt;% 
+  group_by(candy_type) %&gt;% 
+  summarise(count = n()) %&gt;% 
+  slice_max(count, with_ties = TRUE)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>It was regular m&amp;ms which received the most meh ratings</p>
