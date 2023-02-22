@@ -106,27 +106,30 @@ average age was 39.3
 For the opinion the distinct values in the column were "Joy", "Meh", and 
 "Despair", depending on how the person filling out the table felt about each
 respective candy. I looked to see which candies received the most of each of 
-these ratings. For "joy" and "meh"it was regular m&ms which received the most,
-and for "despair" it was jolly ranchers which received the most.
+these ratings. For "joy" "it was "any full sized candy bar" which received the 
+most, and for "despair" and "meh" it was jolly ranchers which received the most.
 
 I looked at breaking down how many of each distinct opinion had been given for
 Starburst candy, and found that 4849 people put "joy", 1046 people put "meh",
 and 1867 people put "despair".
 
 After this I created a new table which was designed to rank the candies with a 
-numeric system based on the previous word ranking system.
+numeric system based on the previous 'word' ranking system.
 
 I used this system to find out how candy had been rated across the various 
-genders in the table. I found that for all genders regular m&ms were the most 
-popular candy
+genders in the table. I found that for male and female "any full sized candy 
+bar" was the highest rated. And for those who put their gender as other or
+"prefer not to say" regular m&ms were the highest rated.
 
 I then used the system to see which were the most popular candies across each of
-the three years in the table and found that in 2015 the most popular candy was
-"any full sized candy bar", and in 2016. and 2017 the most popular candy was 
-regular m&ms
+the three years in the table and found that in 2015 and in 2016 the most popular 
+candy was"any full sized candy bar", and in 2016. and 2017 the most popular 
+candy was regular m&ms.
 
 Finally I broke the table down by country and found the most popular candy in
-the US, the UK, Canada, and all the other countries combined was regular m&ms
+the UK was a five way tie between: "any full sized candy bar", lindt truffle, 
+rolos, toblerone, and regular m&ms. And in the US, Canada, and all the other 
+countries combined the most popular candy was was "any full sized candy bar".
 
 
 

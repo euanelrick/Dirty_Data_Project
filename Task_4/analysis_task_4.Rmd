@@ -19,6 +19,9 @@ library(here)
 library(stringr)
 ```
 
+```{r}
+source(here("cleaning_script_task_4.R"))
+```
 
 
 
@@ -100,7 +103,7 @@ clean_candy %>%
   slice_max(count, with_ties = TRUE)
 ```
 
-It was regular m&ms which received the most joy ratings
+It was "any full sized candy bar" which received the most joy ratings
 
 
 ```{r}
@@ -121,7 +124,7 @@ clean_candy %>%
   slice_max(count, with_ties = TRUE)
 ```
 
-It was regular m&ms which received the most meh ratings
+It was jolly ranchers which received the most meh ratings
 
 
 ##How many people rated Starburst as despair?
@@ -166,7 +169,7 @@ clean_candy_numbers %>%
   summarise(rating = sum(opinion)) %>% 
   slice_max(rating, with_ties = TRUE)
 ```
-For males regular m&ms were the highest rated
+For males "any full sized candy bar" was the highest rated
 
 ```{r}
 clean_candy_numbers %>% 
@@ -176,7 +179,7 @@ clean_candy_numbers %>%
   slice_max(rating, with_ties = TRUE)
 ```
 
-For females regular m&ms were the highest rated
+For females "any full sized candy bar" was the highest rated
 
 
 ```{r}
@@ -221,7 +224,7 @@ clean_candy_numbers %>%
   slice_max(rating, with_ties = TRUE)
 ```
 
-In 2016 the most popular candy was regular m&ms
+In 2016 the most "any full sized candy bar" was regular m&ms
 
 ```{r}
 clean_candy_numbers %>% 
@@ -242,7 +245,7 @@ clean_candy_numbers %>%
   summarise(rating = sum(opinion)) %>% 
   slice_max(rating, with_ties = TRUE)
 ```
-The most popular candy in the US was regular m&ms
+The most popular candy in the US was "any full sized candy bar"
 
 
 ```{r}
@@ -253,7 +256,8 @@ clean_candy_numbers %>%
   slice_max(rating, with_ties = TRUE)
 ```
 
-The most popular candy in the UK was regular m&ms
+The most popular candy in the UK was a five way tie between: 
+"any full sized candy bar", lindt truffle, rolos, toblerone, and regular m&ms
 
 ```{r}
 clean_candy_numbers %>% 
@@ -263,7 +267,7 @@ clean_candy_numbers %>%
   slice_max(rating, with_ties = TRUE)
 ```
 
-The most popular candy in Canada was regular m&ms
+The most popular candy in Canada was "any full sized candy bar"
 
 
 ```{r}
@@ -273,5 +277,6 @@ clean_candy_numbers %>%
   summarise(rating = sum(opinion)) %>% 
   slice_max(rating, with_ties = TRUE)
 ```
-The most popular candy in all the other countries together was regular m&ms
+The most popular candy in all the other countries together was 
+"any full sized candy bar"
 

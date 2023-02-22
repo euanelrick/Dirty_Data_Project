@@ -121,6 +121,8 @@ candy_2016_trimmed %>%
     TRUE ~ "Other"
   ))
 
+# Using case_when to get rid of duplicates of the same country
+
 
 # Cleaning candy_2017 -----------------------------------------------------
 
@@ -174,7 +176,7 @@ candy_2017_trimmed <-
     
   ))
 
-  
+# Using case_when to get rid of duplicates of the same country
 
 # Binding tables  ---------------------------------------------------------
 
@@ -192,18 +194,16 @@ clean_candy <- clean_candy %>%
          "anonymous_brown_globs_that_come_in_black_and_orange_wrappers_a_k_a_mary_janes"
          = "anonymous_brown_globs_that_come_in_black_and_orange_wrappers",
          "bonkers_the_candy" = "bonkers",
+         "m_ms" = "regular_m_ms",
          "third_party_m_ms" = "regular_m_ms",
          "green_party_m_ms" = "regular_m_ms",
-         "independent_m_ms" = "regular_m_ms",
-         "smarties_american" = "smarties",
-         "smarties_commonwealth" = "smarties",
-         "blue_m_ms" = "regular_m_ms",
-         "m_ms" = "regular_m_ms",
-         "red_m_ms" = "regular_m_ms",
          "tolberone_something_or_other" = "toblerone",
          "chick_o_sticks_we_don_t_know_what_that_is" = "chick_o_sticks",
          "sandwich_sized_bags_filled_with_boo_berry_crunch" = "boo_berry_crunch"
          )) 
+
+# Making the names of the different candy types uniform and uniting some under
+# the same heading
 
 
 clean_candy <- clean_candy %>% 
@@ -219,7 +219,7 @@ clean_candy <- clean_candy %>%
                        "healthy_fruit",
                        "hugs_actual_physical_hugs",
                        "lapel_pins",
-                       "joy_joy_mit_iodine",
+                       "joy_joy_mit_iodine", # Uter
                        "pencils",
                        "peterson_brand_sidewalk_chalk",
                        "vicodin",
@@ -233,6 +233,7 @@ clean_candy <- clean_candy %>%
                        "minibags_of_chips"
                             ))
   
+# Removing anything that doesn't fall under the 'candy' category
 
 
 # Writing clean data to a .csv file for analysis --------------------------
