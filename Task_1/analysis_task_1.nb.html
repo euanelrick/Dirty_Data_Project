@@ -11,7 +11,7 @@
 
 
 
-<title>Birds Analysis</title>
+<title>Task 1 Analysis</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1746,24 +1746,23 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Birds Analysis</h1>
+<h1 class="title toc-ignore">Task 1 Analysis</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="loading-in-packages" class="section level1">
-<h1>Loading in packages</h1>
+<p>#Loading in packages</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShuYW5pYXIpXG5cbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5saWJyYXJ5KGphbml0b3IpXG5cbmxpYnJhcnkocmVhZHhsKVxuXG5saWJyYXJ5KGhlcmUpXG5cbmxpYnJhcnkoc3RyaW5ncilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShuYW5pYXIpXG5cbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5saWJyYXJ5KGphbml0b3IpXG5cbmxpYnJhcnkocmVhZHIpXG5cbmxpYnJhcnkoaGVyZSlcblxubGlicmFyeShzdHJpbmdyKVxuYGBgIn0= -->
 <pre class="r"><code>library(naniar)
 
 library(tidyverse)
 
 library(janitor)
 
-library(readxl)
+library(readr)
 
 library(here)
 
@@ -1771,136 +1770,93 @@ library(stringr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-<div id="sourcing-from-the-cleaning-script" class="section level1">
-<h1>Sourcing from the cleaning script</h1>
+<p>#Sourcing cleaning script</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKGhlcmUoXCJjbGVhbmluZ19zY3JpcHRfdGFza18zLlJcIikpXG5gYGAifQ== -->
-<pre class="r"><code>source(here(&quot;cleaning_script_task_3.R&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKGhlcmUoXCJjbGVhbmluZ19zY3JpcHRfdGFza18xLlJcIikpXG5gYGAifQ== -->
+<pre class="r"><code>source(here(&quot;cleaning_script_task_1.R&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Reading in clean data csv</p>
+<p>#Reading in clean_data .csv file</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVyZSgpXG5cbnNoaXBzX2JpcmRzX2NsZWFuIDwtIHJlYWRfY3N2KGhlcmUoXCJjbGVhbl9kYXRhL3NoaXBzX2JpcmRzX2NsZWFuLmNzdlwiKSlcbiAgXG5gYGAifQ== -->
-<pre class="r"><code>here()
-
-ships_birds_clean &lt;- read_csv(here(&quot;clean_data/ships_birds_clean.csv&quot;))
-  </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoaGVyZShcImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdlwiKSlcbmBgYCJ9 -->
+<pre class="r"><code>read_csv(here(&quot;clean_data/decathlon_clean.csv&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Which bird had the most individual sightings?</p>
+<p>#Who had the longest long jump seen in the data?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIFxuICBzdW1tYXJpc2UoaW5kaXZpZHVhbF9zaWdodGluZ3MgPSBuX2Rpc3RpbmN0KHJlY29yZF9pZCkpICU+JSBcbiAgYXJyYW5nZShkZXNjKGluZGl2aWR1YWxfc2lnaHRpbmdzKSkgJT4lIFxuICBzbGljZV9tYXgoaW5kaXZpZHVhbF9zaWdodGluZ3MsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSAlPiUgXG4gIHB1bGwoc3BlY2llc19hYmJyZXZpYXRpb24pXG4gIFxuYGBgIn0= -->
-<pre class="r"><code>ships_birds_clean %&gt;% 
-  group_by(species_abbreviation) %&gt;% 
-  summarise(individual_sightings = n_distinct(record_id)) %&gt;% 
-  arrange(desc(individual_sightings)) %&gt;% 
-  slice_max(individual_sightings, n = 1, with_ties = TRUE) %&gt;% 
-  pull(species_abbreviation)
-  </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVjYXRobG9uX2NsZWFuICU+JSBcbiAgc2VsZWN0KG5hbWUsIGxvbmdfanVtcCkgJT4lIFxuICBzbGljZV9tYXgobG9uZ19qdW1wLCB3aXRoX3RpZXMgPSBUUlVFKVxuYGBgIn0= -->
+<pre class="r"><code>decathlon_clean %&gt;% 
+  select(name, long_jump) %&gt;% 
+  slice_max(long_jump, with_ties = TRUE)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>DIOANTEXU was the most common species abbreviation, with 5632
-individual sightings. This abbreviation is representative of the
-“Wandering Albatross”</p>
-<p>#Which bird had the highest total count?</p>
+<p>Clay had the longest long jump at 7.96m</p>
+<p>#What was the average 100m time in each competition?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIFxuICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgXG4gIGFycmFuZ2UoZGVzYyh0b3RhbF9jb3VudCkpICU+JSBcbiAgc2xpY2VfbWF4KHRvdGFsX2NvdW50LCBuID0gMSwgd2l0aF90aWVzID0gVFJVRSkgJT4lIFxuICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKVxuYGBgIn0= -->
-<pre class="r"><code>ships_birds_clean %&gt;% 
-  group_by(species_abbreviation) %&gt;% 
-  summarise(total_count = sum(count)) %&gt;% 
-  arrange(desc(total_count)) %&gt;% 
-  slice_max(total_count, n = 1, with_ties = TRUE) %&gt;% 
-  pull(species_abbreviation)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVjYXRobG9uX2NsZWFuICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfMTAwbSA9IG1lYW4oYDEwMG1gKSlcbmBgYCJ9 -->
+<pre class="r"><code>decathlon_clean %&gt;% 
+  summarise(average_100m = mean(`100m`))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUFVGVEVOXCJcbiJ9 -->
-<pre><code>[1] &quot;PUFTEN&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>PUFTEN was the species abbreviation with the highest total count of
-sightings at 982553 total sightings. PUFTEN is representative of the
-short-tailed shearwater species.</p>
-<p>#Which bird had the highest total count above a latitude of -30?</p>
+<p>Average 100 meter time was 11.0</p>
+<p>#Who had the highest total points across both competitions?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBmaWx0ZXIobGF0ID4gLTMwKSAlPiUgXG4gIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgXG4gIHN1bW1hcmlzZSh0b3RhbF9jb3VudCA9IHN1bShjb3VudCkpICU+JSBcbiAgYXJyYW5nZShkZXNjKHRvdGFsX2NvdW50KSkgJT4lIFxuICBzbGljZV9tYXgodG90YWxfY291bnQsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSBcbmBgYCJ9 -->
-<pre class="r"><code>ships_birds_clean %&gt;% 
-  filter(lat &gt; -30) %&gt;% 
-  group_by(species_abbreviation) %&gt;% 
-  summarise(total_count = sum(count)) %&gt;% 
-  arrange(desc(total_count)) %&gt;% 
-  slice_max(total_count, n = 1, with_ties = TRUE) </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRd1U3RE1BeDFzd1cwb2syVDREZGFhWERoQ0FMdFBDRW03VGFsV1JnUklhbVNGRGh5NW92NHVnMm5UYVFSSDlybjV6emJ6MCtQbTV0eVV3TEFDTWFFd0lnaUJMcCtYbGEzZ0F3bUJZeGhFdjVmK09nU1FTRG5KNFd6MVhxNXVuOUFOQXZzM2M4dkRQRlBUalY3Rnk1S1NTU3ZYQ3U0Rkc3TG1zYUtEOG04TkRyV0xyenhURzI1NmJUUGVrMnMrYXhUdjJubzk0MmZJMFkrbEN2bVhMWnZ1V09lMVM4VzlaZ2RNc201YWNNU0tDTEJMTTNFaGMySWVhZkRKcnVLdjNiNnJWcGNod2w5ZllocHhNVUpKc05NY295OWFMcWswSHVwUlZwZXNVYW9tTXpRY3UrNGJxM0VnMFFyeUxxNlAxUml1RkdKNmMzQjRRL2dYZUljNUFFQUFBPT0ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTJRM3c3Qk1CakZQN1VTRXlMeEhOc0ZONjVGUElBL2lUdXBLUmJWU2x2aDBsTjZISHl0TnBFMjJYYjYyODVPejdlWWJjYjVKZ2VBSm1TRVFKT2lCTHBlellzSklNRk5BekxvdU9jRFB4cWljSER3OTZLMTVEc3RPS3FlcHpCOUpWWXEyWVdiWUNNQlpnNEczYlhLTXJFMWxkSTg4WGEwdXBmUjd3TElFMjhmWEdsSUpaZ3h5ZG55UGJPc1BHZ1hCZkJPTEcxMXRiV1NhQ0t1R0UzTURaMkF3VTI2ayt5TDZuU1Q1MkkwY2dtL3puNkYvdjZLbXZ3eXlTZjhpOGFwY1htc1pSd0FGV3pIUmRqMHNiSnZYRjUxTFcyc2d0U1VmbENSVkVwRTRzdkIrd3Z3RCs0MDBBRUFBQT09In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species_abbreviation"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_count"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"PUFPAC","2":"855"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_score"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Sebrle","2":"17110"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>The wedge-tailed shearwater was the bird with the highest count above
-a latitiude of -30 with a total count of 855</p>
-<p>#How many different types of birds were only ever seen in groups of
-1?</p>
+<p>Sebrle had the highest score across both competitions with 17110
+points</p>
+<p>#What was the shot-put scores for the top three competitors in each
+competition?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zaGlwc19iaXJkc19jbGVhbiAlPiUgXG4gIHN1bW1hcmlzZShpbmRpdmlkdWFsX3NwZWNpZXMgPSBuX2Rpc3RpbmN0KHNwZWNpZXNfYWJicmV2aWF0aW9uKSlcblxuXG5zaGlwc19iaXJkc19jb3VudF8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSBcbiAgZmlsdGVyKGNvdW50ID09IDEpXG5cblxuc2hpcHNfYmlyZHNfZ3JlYXRlcl8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSBcbiAgZmlsdGVyKGNvdW50ID4gMSlcblxuXG5zaGlwc19iaXJkc19jb3VudF8xICU+JSBcbiAgYW50aV9qb2luKHNoaXBzX2JpcmRzX2dyZWF0ZXJfMSwgYnkgPSBcInNwZWNpZXNfYWJicmV2aWF0aW9uXCIpICU+JSBcbiAgc3VtbWFyaXNlKHNvbG9fc3BlY2llcyA9IG5fZGlzdGluY3Qoc3BlY2llc19hYmJyZXZpYXRpb24pKSAlPiUgXG4gIHB1bGwoKVxuXG5cbmBgYCJ9 -->
-<pre class="r"><code>
-ships_birds_clean %&gt;% 
-  summarise(individual_species = n_distinct(species_abbreviation))
-
-
-ships_birds_count_1 &lt;- ships_birds_clean %&gt;% 
-  filter(count == 1)
-
-
-ships_birds_greater_1 &lt;- ships_birds_clean %&gt;% 
-  filter(count &gt; 1)
-
-
-ships_birds_count_1 %&gt;% 
-  anti_join(ships_birds_greater_1, by = &quot;species_abbreviation&quot;) %&gt;% 
-  summarise(solo_species = n_distinct(species_abbreviation)) %&gt;% 
-  pull()
-</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjE0LCJzdW1tYXJ5Ijp7IkEgdGliYmxlIjpbIjYgw5cgMTQiXSwiR3JvdXBzIjpbImNvbXBldGl0aW9uIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE0MVVQVXdVUVJTZSs5a1Rqa2dRem9KRU9EVUJNYkRIWFU0U295R1pBcmtsaEJCUUUweElMc1BlM3QzQzN1N2U3QzRLV3REWTJOQVpzVEF4TkZZME5qUTJHbU9qbFlXTk1WSlphR0dEaFFYbi9PNGVWem5KN0p0NTg3MzN2dmZlekM3UHJCVFRLMmtBUUFJazQzR1FVTWdTS0hmdnpLclhBZEdRVFF3a1FUZVZEd2hvZ0N4Nnlld2pNeVVPVXZjQ3ZPRnN5dDF0WXcxYmh0ek5JK3orMTVteWdIUmppNFE0eTF6VHVOR01SL01VcDVSbGJCcVdKd2pGaGJacnh0Q1I1eU1zOTR2V1ZzTTE5VktIdGFKYnlKUEdvY3NxMG4wSGs5V0p5RFVGUnc4eTIwZWxBempLUkFhT3BxZmQvUzlwT1BLNlNBY2NBV3pBa1E4VXFJVjJGMWJIanQvdXJzTGhwWitQaHcrWDRWQ1I0N05DbjJWdXB1RVE5YnA5Rk5ybEVOdEQ5UldGWFlYcUV4NHZMK3dtdndvWmtPL1luOUFPZktUakV3UzdEQWlCaUF1T0dRNkNRNmFBTWM0anRKdWI0dWZhRDhZZmFwUGNYc3Z4dkVzMW9YL0U0a1k4WDFDSFdhZ0t2aE1DUHpHNFI4WnpPUDZicHRlRTZqRERoWGFsU3h4LzZ6dXZtN2JGOFpySWIrNHpyNU0yVHRndS9RcnQrbm1kWUViMFlVRDBKU1BxMzE5bEE1N2JZLzVDdTBXUjkrSXpMdWV1OEh5V1huSi84KzhaUWJod2c3cDlHTm8xWjdrL2ZKUHp3ZSs0Yk81d25rM0U2K1krbGZuSnk2dUlpNXRvazhub1BGc0I0T0lna2ZzQVhINUQ1bm15Lzhhdlo2TFZjU1BURmVTalhCV2podEZ4Z2J1eGN6OW5FNzBuWE1kM3lLZlZhdjN0dk9rUzFNZHk0OG9rVllwMWorNDBYTU0zZmRPeDVYRWhuMi9JUUpaajE4cnJRY09WVDhxck8zN1pEWHdKcUp1MWVqc2dlUzJ5N2lrVThvMXlQY0NWNk8xWFRFOFBQSm1oNjFoR2VSTUZsdlRYdFk3SXd6WnRpVmNLVTVHL0pFYjJoblRrT3FidGUveTVuc3I1ak9QU2JNaFJmRUIwcEwycU1keWg2QXRzV3BDS3F0Y0RlME10NWlreDBUNGc2aHNUN1pYclhoNVRrUzFUSkN2RHJyV1J0OUNhWVlsTkwra1o2MGJPeFlTNXJBRFJlam5mOFpIRXBYWEhraHIrTHpyNUI4WWZnM090QlFBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["competition"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["100m"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["long_jump"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["shot_put"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["high_jump"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["400m"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["110m_hurdle"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["discus"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["pole_vault"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["javeline"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["1500m"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[13],"type":["int"],"align":["right"]},{"label":["points"],"name":[14],"type":["int"],"align":["right"]}],"data":[{"1":"Yurkov","2":"Decastar","3":"11.34","4":"7.09","5":"15.19","6":"2.10","7":"50.42","8":"15.31","9":"46.26","10":"4.72","11":"63.44","12":"276.40","13":"5","14":"8036"},{"1":"Sebrle","2":"Decastar","3":"11.04","4":"7.58","5":"14.83","6":"2.07","7":"49.81","8":"14.69","9":"43.75","10":"5.02","11":"63.19","12":"291.70","13":"1","14":"8217"},{"1":"Karpov","2":"Decastar","3":"11.02","4":"7.30","5":"14.77","6":"2.04","7":"48.37","8":"14.09","9":"48.95","10":"4.92","11":"50.31","12":"300.20","13":"3","14":"8099"},{"1":"Sebrle","2":"OlympicG","3":"10.85","4":"7.84","5":"16.36","6":"2.12","7":"48.36","8":"14.05","9":"48.72","10":"5.00","11":"70.52","12":"280.01","13":"1","14":"8893"},{"1":"Karpov","2":"OlympicG","3":"10.50","4":"7.81","5":"15.93","6":"2.09","7":"46.81","8":"13.97","9":"51.65","10":"4.60","11":"55.54","12":"278.11","13":"3","14":"8725"},{"1":"Macey","2":"OlympicG","3":"10.89","4":"7.47","5":"15.73","6":"2.15","7":"48.97","8":"14.56","9":"48.34","10":"4.40","11":"58.46","12":"265.42","13":"4","14":"8414"}],"options":{"columns":{"min":{},"max":[10],"total":[14]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>In total there were 23 distinct species that were only ever seen in
-groups of one</p>
-</div>
-<div id="how-many-penguins-were-seen" class="section level1">
-<h1>How many penguins were seen?</h1>
+<p>In the decastar competition the top three scores for shot-put were:
+15.19, 14.83, and 14.77</p>
+<p>In the OlympicG the top three shot-put scores were: 16.36, 15.93, and
+15.73</p>
+<p>#What was the average points for competitors who ran the 400m in less
+than 50 seconds vs. those than ran 400m in more than 50 seconds?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBmaWx0ZXIoXG4gICAgICBzdHJfZGV0ZWN0KHNwZWNpZXNfY29tbW9uX25hbWVfdGF4b25fYWdlX3NleF9wbHVtYWdlX3BoYXNlLCBcbiAgICAgICAgICAgICAgICAgXCIoP2kpcGVuZ3VpblwiKSA9PSBUUlVFKSAlPiUgXG4gIHN1bW1hcmlzZSh0b3RhbF9jb3VudCA9IHN1bShjb3VudCkpICU+JSBcbiAgcHVsbCgpXG5gYGAifQ== -->
-<pre class="r"><code>ships_birds_clean %&gt;% 
-  filter(
-      str_detect(species_common_name_taxon_age_sex_plumage_phase, 
-                 &quot;(?i)penguin&quot;) == TRUE) %&gt;% 
-  summarise(total_count = sum(count)) %&gt;% 
-  pull()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE1OFxuIn0= -->
-<pre><code>[1] 158</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIyIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRd1VvRE1SQ2RUUnVsd1phS2Z5SHNLbGpCWXcvaUI0aENiMHZjeG5ZeEprdVNxdURGci9BWGhQVUg5R0wvck90a1RRN21rcng1ekhzemI2NHZGMmRzd1FCZ0FFTkNZRUFSQXIyOXVjb3ZBQmtzTWhqQ3lQOHYySFNFd0pNcy9OQTNBRXg4UGY4NU9XN2I5bk8rL1hwOVAvejRUZ3lvNG8vQ0lwajI0ai95UUFwclM3Zm1xancvRGR5RVB3bkRWNkpzZEsyY1RXeEdSajhYMFdyc3JkN3c2YnB1bDg2ckpMZHhYaVRaa2p0ZTNCdlVZNVZLOW5YamFxMVFSSHhTbW9nemt4RFRqZktiTFBOcXZWRVArV3dXVHBPRjA0d0RKdit4bjBtNjRFV0QxNTVRcTFxSnVMemtkMExHZzJEa1BuSFJHTHhJaklLc0xaeDJQUGF4U3N2STlPRmc5d3N0UVI2VjRRRUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["less_than_50"],"name":[1],"type":["lgl"],"align":["right"]},{"label":["average_points"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"FALSE","2":"7727.167"},{"1":"TRUE","2":"8120.483"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>In total 158 penguins were observed</p>
+<p>For those that ran the 400m in less than 50 seconds the average
+points were 8120 And for those that ran the 400m in over 50 seconds the
+average points were 7727</p>
 <!-- rnb-text-end -->
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlyZHMgQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCgojIExvYWRpbmcgaW4gcGFja2FnZXMKYGBge3J9CmxpYnJhcnkobmFuaWFyKQoKbGlicmFyeSh0aWR5dmVyc2UpCgpsaWJyYXJ5KGphbml0b3IpCgpsaWJyYXJ5KHJlYWR4bCkKCmxpYnJhcnkoaGVyZSkKCmxpYnJhcnkoc3RyaW5ncikKYGBgCgoKCgojIFNvdXJjaW5nIGZyb20gdGhlIGNsZWFuaW5nIHNjcmlwdApgYGB7cn0Kc291cmNlKGhlcmUoImNsZWFuaW5nX3NjcmlwdF90YXNrXzMuUiIpKQpgYGAKCgoKCiNSZWFkaW5nIGluIGNsZWFuIGRhdGEgY3N2CgpgYGB7cn0KaGVyZSgpCgpzaGlwc19iaXJkc19jbGVhbiA8LSByZWFkX2NzdihoZXJlKCJjbGVhbl9kYXRhL3NoaXBzX2JpcmRzX2NsZWFuLmNzdiIpKQogIApgYGAKCgojV2hpY2ggYmlyZCBoYWQgdGhlIG1vc3QgaW5kaXZpZHVhbCBzaWdodGluZ3M/CgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKGluZGl2aWR1YWxfc2lnaHRpbmdzID0gbl9kaXN0aW5jdChyZWNvcmRfaWQpKSAlPiUgCiAgYXJyYW5nZShkZXNjKGluZGl2aWR1YWxfc2lnaHRpbmdzKSkgJT4lIAogIHNsaWNlX21heChpbmRpdmlkdWFsX3NpZ2h0aW5ncywgbiA9IDEsIHdpdGhfdGllcyA9IFRSVUUpICU+JSAKICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKQogIApgYGAKCkRJT0FOVEVYVSB3YXMgdGhlIG1vc3QgY29tbW9uIHNwZWNpZXMgYWJicmV2aWF0aW9uLCB3aXRoIDU2MzIgaW5kaXZpZHVhbCAKc2lnaHRpbmdzLiBUaGlzIGFiYnJldmlhdGlvbiBpcyByZXByZXNlbnRhdGl2ZSBvZiB0aGUgIldhbmRlcmluZyBBbGJhdHJvc3MiCgoKCiNXaGljaCBiaXJkIGhhZCB0aGUgaGlnaGVzdCB0b3RhbCBjb3VudD8KCgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKHRvdGFsX2NvdW50ID0gc3VtKGNvdW50KSkgJT4lIAogIGFycmFuZ2UoZGVzYyh0b3RhbF9jb3VudCkpICU+JSAKICBzbGljZV9tYXgodG90YWxfY291bnQsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSAlPiUgCiAgcHVsbChzcGVjaWVzX2FiYnJldmlhdGlvbikKYGBgCgpQVUZURU4gd2FzIHRoZSBzcGVjaWVzIGFiYnJldmlhdGlvbiB3aXRoIHRoZSBoaWdoZXN0IHRvdGFsIGNvdW50IG9mIHNpZ2h0aW5ncyBhdCAKOTgyNTUzIHRvdGFsIHNpZ2h0aW5ncy4gClBVRlRFTiBpcyByZXByZXNlbnRhdGl2ZSBvZiB0aGUgc2hvcnQtdGFpbGVkIHNoZWFyd2F0ZXIgc3BlY2llcy4KCgojV2hpY2ggYmlyZCBoYWQgdGhlIGhpZ2hlc3QgdG90YWwgY291bnQgYWJvdmUgYSBsYXRpdHVkZSBvZiAtMzA/CgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGZpbHRlcihsYXQgPiAtMzApICU+JSAKICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIAogIHN1bW1hcmlzZSh0b3RhbF9jb3VudCA9IHN1bShjb3VudCkpICU+JSAKICBhcnJhbmdlKGRlc2ModG90YWxfY291bnQpKSAlPiUgCiAgc2xpY2VfbWF4KHRvdGFsX2NvdW50LCBuID0gMSwgd2l0aF90aWVzID0gVFJVRSkgCmBgYAoKVGhlIHdlZGdlLXRhaWxlZCBzaGVhcndhdGVyIHdhcyB0aGUgYmlyZCB3aXRoIHRoZSBoaWdoZXN0IGNvdW50IGFib3ZlIGEgCmxhdGl0aXVkZSBvZiAtMzAgd2l0aCBhIHRvdGFsIGNvdW50IG9mIDg1NQoKCgoKCiNIb3cgbWFueSBkaWZmZXJlbnQgdHlwZXMgb2YgYmlyZHMgd2VyZSBvbmx5IGV2ZXIgc2VlbiBpbiBncm91cHMgb2YgMT8KCmBgYHtyfQoKc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIHN1bW1hcmlzZShpbmRpdmlkdWFsX3NwZWNpZXMgPSBuX2Rpc3RpbmN0KHNwZWNpZXNfYWJicmV2aWF0aW9uKSkKCgpzaGlwc19iaXJkc19jb3VudF8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoY291bnQgPT0gMSkKCgpzaGlwc19iaXJkc19ncmVhdGVyXzEgPC0gc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGZpbHRlcihjb3VudCA+IDEpCgoKc2hpcHNfYmlyZHNfY291bnRfMSAlPiUgCiAgYW50aV9qb2luKHNoaXBzX2JpcmRzX2dyZWF0ZXJfMSwgYnkgPSAic3BlY2llc19hYmJyZXZpYXRpb24iKSAlPiUgCiAgc3VtbWFyaXNlKHNvbG9fc3BlY2llcyA9IG5fZGlzdGluY3Qoc3BlY2llc19hYmJyZXZpYXRpb24pKSAlPiUgCiAgcHVsbCgpCgoKYGBgCgpJbiB0b3RhbCB0aGVyZSB3ZXJlIDIzIGRpc3RpbmN0IHNwZWNpZXMgdGhhdCB3ZXJlIG9ubHkgZXZlciBzZWVuIGluIGdyb3VwcyBvZiAKb25lCgoKIyBIb3cgbWFueSBwZW5ndWlucyB3ZXJlIHNlZW4/IAoKYGBge3J9CnNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoCiAgICAgIHN0cl9kZXRlY3Qoc3BlY2llc19jb21tb25fbmFtZV90YXhvbl9hZ2Vfc2V4X3BsdW1hZ2VfcGhhc2UsIAogICAgICAgICAgICAgICAgICIoP2kpcGVuZ3VpbiIpID09IFRSVUUpICU+JSAKICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgCiAgcHVsbCgpCgpgYGAKCkluIHRvdGFsIDE1OCBwZW5ndWlucyB3ZXJlIG9ic2VydmVkCgoKCgoKCgoKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGFzayAxIEFuYWx5c2lzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiNMb2FkaW5nIGluIHBhY2thZ2VzCgpgYGB7cn0KbGlicmFyeShuYW5pYXIpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmxpYnJhcnkoamFuaXRvcikKCmxpYnJhcnkocmVhZHIpCgpsaWJyYXJ5KGhlcmUpCgpsaWJyYXJ5KHN0cmluZ3IpCmBgYAoKI1NvdXJjaW5nIGNsZWFuaW5nIHNjcmlwdAoKYGBge3J9CnNvdXJjZShoZXJlKCJjbGVhbmluZ19zY3JpcHRfdGFza18xLlIiKSkKYGBgCgoKI1JlYWRpbmcgaW4gY2xlYW5fZGF0YSAuY3N2IGZpbGUKYGBge3J9CnJlYWRfY3N2KGhlcmUoImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdiIpKQpgYGAKCgojV2hvIGhhZCB0aGUgbG9uZ2VzdCBsb25nIGp1bXAgc2VlbiBpbiB0aGUgZGF0YT8KCmBgYHtyfQpkZWNhdGhsb25fY2xlYW4gJT4lIAogIHNlbGVjdChuYW1lLCBsb25nX2p1bXApICU+JSAKICBzbGljZV9tYXgobG9uZ19qdW1wLCB3aXRoX3RpZXMgPSBUUlVFKQpgYGAKQ2xheSBoYWQgdGhlIGxvbmdlc3QgbG9uZyBqdW1wIGF0IDcuOTZtCgoKI1doYXQgd2FzIHRoZSBhdmVyYWdlIDEwMG0gdGltZSBpbiBlYWNoIGNvbXBldGl0aW9uPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfMTAwbSA9IG1lYW4oYDEwMG1gKSkKYGBgCkF2ZXJhZ2UgMTAwIG1ldGVyIHRpbWUgd2FzIDExLjAKCgojV2hvIGhhZCB0aGUgaGlnaGVzdCB0b3RhbCBwb2ludHMgYWNyb3NzIGJvdGggY29tcGV0aXRpb25zPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgZ3JvdXBfYnkobmFtZSkgJT4lIAogIHN1bW1hcmlzZSh0b3RhbF9zY29yZSA9IHN1bShwb2ludHMpKSAlPiUgCiAgc2xpY2VfbWF4KHRvdGFsX3Njb3JlLCB3aXRoX3RpZXMgPSBUUlVFKQpgYGAKU2VicmxlIGhhZCB0aGUgaGlnaGVzdCBzY29yZSBhY3Jvc3MgYm90aCBjb21wZXRpdGlvbnMgd2l0aCAxNzExMCBwb2ludHMKCgojV2hhdCB3YXMgdGhlIHNob3QtcHV0IHNjb3JlcyBmb3IgdGhlIHRvcCB0aHJlZSBjb21wZXRpdG9ycyBpbiBlYWNoIGNvbXBldGl0aW9uPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgZ3JvdXBfYnkoY29tcGV0aXRpb24pICU+JSAKICBzbGljZV9tYXgoc2hvdF9wdXQsIG49Mywgd2l0aF90aWVzID0gVFJVRSkKYGBgCgpJbiB0aGUgZGVjYXN0YXIgY29tcGV0aXRpb24gdGhlIHRvcCB0aHJlZSBzY29yZXMgZm9yIHNob3QtcHV0IHdlcmU6IDE1LjE5LCAKMTQuODMsIGFuZCAxNC43NwoKSW4gdGhlIE9seW1waWNHIHRoZSB0b3AgdGhyZWUgc2hvdC1wdXQgc2NvcmVzIHdlcmU6IDE2LjM2LCAxNS45MywgYW5kIDE1LjczCgoKI1doYXQgd2FzIHRoZSBhdmVyYWdlIHBvaW50cyBmb3IgY29tcGV0aXRvcnMgd2hvIHJhbiB0aGUgNDAwbSBpbiBsZXNzIHRoYW4gNTAgCnNlY29uZHMgdnMuIHRob3NlIHRoYW4gcmFuIDQwMG0gaW4gbW9yZSB0aGFuIDUwIHNlY29uZHM/CgpgYGB7cn0KZGVjYXRobG9uX2NsZWFuICU+JSAKICBtdXRhdGUoCiAgICBsZXNzX3RoYW5fNTAgPSBjYXNlX3doZW4oCiAgICAgIGA0MDBtYCA8IDUwIH4gVFJVRSwKICAgICAgYDQwMG1gID4gNTAgfiBGQUxTRQogICkpICU+JSAKICBncm91cF9ieShsZXNzX3RoYW5fNTApICU+JSAKICBzdW1tYXJpc2UoYXZlcmFnZV9wb2ludHMgPSBtZWFuKHBvaW50cykpCmBgYAoKRm9yIHRob3NlIHRoYXQgcmFuIHRoZSA0MDBtIGluIGxlc3MgdGhhbiA1MCBzZWNvbmRzIHRoZSBhdmVyYWdlIHBvaW50cyB3ZXJlIDgxMjAKQW5kIGZvciB0aG9zZSB0aGF0IHJhbiB0aGUgNDAwbSBpbiBvdmVyIDUwIHNlY29uZHMgdGhlIGF2ZXJhZ2UgcG9pbnRzIHdlcmUgNzcyNwo=</div>
 
 
 
@@ -1947,7 +1903,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("analysis_task_3.Rmd");
+  window.initializeSourceEmbed("analysis_task_1.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

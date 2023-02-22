@@ -1,0 +1,93 @@
+---
+title: "Task 1 Analysis"
+output: html_notebook
+---
+#Loading in packages
+
+```{r}
+library(naniar)
+
+library(tidyverse)
+
+library(janitor)
+
+library(readr)
+
+library(here)
+
+library(stringr)
+```
+
+#Sourcing cleaning script
+
+```{r}
+source(here("cleaning_script_task_1.R"))
+```
+
+
+#Reading in clean_data .csv file
+```{r}
+read_csv(here("clean_data/decathlon_clean.csv"))
+```
+
+
+#Who had the longest long jump seen in the data?
+
+```{r}
+decathlon_clean %>% 
+  select(name, long_jump) %>% 
+  slice_max(long_jump, with_ties = TRUE)
+```
+Clay had the longest long jump at 7.96m
+
+
+#What was the average 100m time in each competition?
+
+```{r}
+decathlon_clean %>% 
+  summarise(average_100m = mean(`100m`))
+```
+Average 100 meter time was 11.0
+
+
+#Who had the highest total points across both competitions?
+
+```{r}
+decathlon_clean %>% 
+  group_by(name) %>% 
+  summarise(total_score = sum(points)) %>% 
+  slice_max(total_score, with_ties = TRUE)
+```
+Sebrle had the highest score across both competitions with 17110 points
+
+
+#What was the shot-put scores for the top three competitors in each competition?
+
+```{r}
+decathlon_clean %>% 
+  group_by(competition) %>% 
+  slice_max(shot_put, n=3, with_ties = TRUE)
+```
+
+In the decastar competition the top three scores for shot-put were: 15.19, 
+14.83, and 14.77
+
+In the OlympicG the top three shot-put scores were: 16.36, 15.93, and 15.73
+
+
+#What was the average points for competitors who ran the 400m in less than 50 
+seconds vs. those than ran 400m in more than 50 seconds?
+
+```{r}
+decathlon_clean %>% 
+  mutate(
+    less_than_50 = case_when(
+      `400m` < 50 ~ TRUE,
+      `400m` > 50 ~ FALSE
+  )) %>% 
+  group_by(less_than_50) %>% 
+  summarise(average_points = mean(points))
+```
+
+For those that ran the 400m in less than 50 seconds the average points were 8120
+And for those that ran the 400m in over 50 seconds the average points were 7727

@@ -3,6 +3,33 @@ title: "Birds Analysis"
 output: html_notebook
 ---
 
+
+# Loading in packages
+```{r}
+library(naniar)
+
+library(tidyverse)
+
+library(janitor)
+
+library(readxl)
+
+library(here)
+
+library(stringr)
+```
+
+
+
+
+# Sourcing from the cleaning script
+```{r}
+source(here("cleaning_script_task_3.R"))
+```
+
+
+
+
 #Reading in clean data csv
 
 ```{r}
