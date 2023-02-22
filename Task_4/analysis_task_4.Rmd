@@ -1,9 +1,9 @@
 ---
-title: "R Notebook"
+title: "Task 4 Analysis"
 output: html_notebook
 ---
-#Task 4 Analysis
 
+## Loading in packages
 
 ```{r}
 library(naniar)
@@ -19,12 +19,26 @@ library(here)
 library(stringr)
 ```
 
+## Sourcing cleaning script
+
+This file is an R script for cleaning the three different datasets in the 
+raw_data folder and bind them into one dataset to be used in analysis
+
+Each data set was very messy and required a lot of cleaning as seen in the 
+script. I had to make the columns uniform in all of them so they could be 
+binded correctly. And i removed any rows where an opinion hadnt been given to a 
+candy. There was some particularly messy values in the countries
+column which required 'hard-coding'. When the tables were binded I removed all 
+the values in the candy_type column that weren't actually candy, and i combined
+certain candy types if they had been written differently across the three 
+years.
+
 ```{r}
 source(here("cleaning_script_task_4.R"))
 ```
 
 
-
+## Reading in clean_candy.csv
 ```{r}
 here()
 
@@ -33,7 +47,7 @@ clean_candy <- read_csv("clean_data/clean_candy.csv")
 
 
 
-##What is the total number of candy ratings given across the three years. (Number of candy ratings, not the number of raters. Don’t count missing values)
+## What is the total number of candy ratings given across the three years. (Number of candy ratings, not the number of raters. Don’t count missing values)
 
 Already removed NAs in opinions column so can just count the number of rows
 
@@ -51,7 +65,7 @@ clean_candy %>%
 589655 ratings were given across the three years
 
 
-##What was the average age of people who are and are not going out trick or 
+## What was the average age of people who are and are not going out trick or 
 treating?
 
 ```{r}
@@ -91,7 +105,7 @@ It was jolly ranchers which received the most despair ratings
 
 
 
-##How many people rated Starburst as despair?
+## How many people rated Starburst as despair?
 
 ```{r}
 clean_candy %>% 
@@ -104,8 +118,7 @@ clean_candy %>%
 
 
 
-###What was the most popular candy bar by this rating system for each gender in 
-###the dataset ?
+### What was the most popular candy bar by this rating system for each gender in the dataset ?
 
 ```{r}
 clean_candy_numbers <- clean_candy %>% 
@@ -119,11 +132,6 @@ clean_candy_numbers <- clean_candy %>%
   )))
 ```
 
-
-```{r}
-clean_candy %>% 
-  distinct(gender)
-```
 
 
 ```{r}
@@ -143,7 +151,7 @@ regular m&ms
 
 
 
-##What was the most popular candy bar in each year?
+## What was the most popular candy bar in each year?
 
 ```{r}
 clean_candy_numbers %>% 
@@ -158,7 +166,7 @@ In 2016 the most "any full sized candy bar" was regular m&ms
 In 2017 the most popular candy was regular m&ms
 
 
-##What was the most popular candy bar by this rating for people in US, Canada, UK, and all other countries?
+## What was the most popular candy bar by this rating for people in US, Canada, UK, and all other countries?
 
 ```{r}
 clean_candy_numbers %>% 
@@ -175,4 +183,53 @@ The most popular candy in Canada was "any full sized candy bar"
 
 The most popular candy in all the other countries together was 
 "any full sized candy bar"
+
+
+## Summary of Analysis
+
+My first question was to look at how many candy ratings had been given out over 
+the three years. As I had already removed any NAs from the opinion column I 
+was able to simply add up how many rows were in that column and got an answer
+of 589655 ratings given
+
+I then looked at the average age of people who went trick or treating and found
+a median age of 38 and a median age of 35.4.
+
+For those who didn't go trick or treating the median age was also 38, but the 
+average age was 39.3
+
+For the opinion the distinct values in the column were "Joy", "Meh", and 
+"Despair", depending on how the person filling out the table felt about each
+respective candy. I looked to see which candies received the most of each of 
+these ratings. For "joy" "it was "any full sized candy bar" which received the 
+most, and for "despair" and "meh" it was jolly ranchers which received the most.
+
+I looked at breaking down how many of each distinct opinion had been given for
+Starburst candy, and found that 4849 people put "joy", 1046 people put "meh",
+and 1867 people put "despair".
+
+After this I created a new table which was designed to rank the candies with a 
+numeric system based on the previous 'word' ranking system.
+
+I used this system to find out how candy had been rated across the various 
+genders in the table. I found that for male and female "any full sized candy 
+bar" was the highest rated. And for those who put their gender as other or
+"prefer not to say" regular m&ms were the highest rated.
+
+I then used the system to see which were the most popular candies across each of
+the three years in the table and found that in 2015 and in 2016 the most popular 
+candy was"any full sized candy bar", and in 2016. and 2017 the most popular 
+candy was regular m&ms.
+
+Finally I broke the table down by country and found the most popular candy in
+the UK was a five way tie between: "any full sized candy bar", lindt truffle, 
+rolos, toblerone, and regular m&ms. And in the US, Canada, and all the other 
+countries combined the most popular candy was was "any full sized candy bar".
+
+
+
+
+
+
+
 

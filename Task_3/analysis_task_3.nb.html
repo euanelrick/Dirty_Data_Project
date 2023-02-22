@@ -11,7 +11,7 @@
 
 
 
-<title>Birds Analysis</title>
+<title>Task 3 Analysis</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1746,14 +1746,14 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Birds Analysis</h1>
+<h1 class="title toc-ignore">Task 3 Analysis</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="loading-in-packages" class="section level1">
-<h1>Loading in packages</h1>
+<div id="loading-in-packages" class="section level2">
+<h2>Loading in packages</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShuYW5pYXIpXG5cbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5saWJyYXJ5KGphbml0b3IpXG5cbmxpYnJhcnkocmVhZHhsKVxuXG5saWJyYXJ5KGhlcmUpXG5cbmxpYnJhcnkoc3RyaW5ncilcbmBgYCJ9 -->
@@ -1772,8 +1772,29 @@ library(stringr)</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="sourcing-from-the-cleaning-script" class="section level1">
-<h1>Sourcing from the cleaning script</h1>
+<div id="sourcing-from-the-cleaning-script" class="section level2">
+<h2>Sourcing from the cleaning script</h2>
+<p>This file is an R script designed to read in the raw data about ships
+and bird observations, and then clean the data so it can be
+analysed.</p>
+<p>The raw data consisted of four sheets in an .xls file. The first
+sheet gave information about an individual ships location, speed, date,
+time, activity and weather. The second sheet gave information about the
+species of bird, age, gender, number spotted, plumage, and how they were
+spotted (flying, floating etc). The other two sheets contained text
+descriptions of the abbreviations used in the columns of the first two
+sheets.</p>
+<p>From this raw data, I standardised names into snakecase style, and
+selected columns I felt would be useful in analysis. From the bird data
+I selected: record, record id, species name, species abbreviation, and
+the count. From the ship data I selected: record id, latitude, and
+longitude. I then joined these two tables by the record id.</p>
+<p>My analysis was focussed on count of birds so I removed rows where
+the count was 0 or NA.</p>
+<p>Some of the species abbreviations had a small abbreviation to signify
+the age of the bird which I also removed as I was interested in species
+as a whole.</p>
+<p>I then wrote the clean data as a .csv file to use in analysis.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKGhlcmUoXCJjbGVhbmluZ19zY3JpcHRfdGFza18zLlJcIikpXG5gYGAifQ== -->
@@ -1781,7 +1802,9 @@ library(stringr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Reading in clean data csv</p>
+</div>
+<div id="reading-in-clean-data-csv" class="section level2">
+<h2>Reading in clean data csv</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVyZSgpXG5cbnNoaXBzX2JpcmRzX2NsZWFuIDwtIHJlYWRfY3N2KGhlcmUoXCJjbGVhbl9kYXRhL3NoaXBzX2JpcmRzX2NsZWFuLmNzdlwiKSlcbiAgXG5gYGAifQ== -->
@@ -1792,7 +1815,9 @@ ships_birds_clean &lt;- read_csv(here(&quot;clean_data/ships_birds_clean.csv&quo
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Which bird had the most individual sightings?</p>
+</div>
+<div id="which-bird-had-the-most-individual-sightings" class="section level2">
+<h2>Which bird had the most individual sightings?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIFxuICBzdW1tYXJpc2UoaW5kaXZpZHVhbF9zaWdodGluZ3MgPSBuX2Rpc3RpbmN0KHJlY29yZF9pZCkpICU+JSBcbiAgYXJyYW5nZShkZXNjKGluZGl2aWR1YWxfc2lnaHRpbmdzKSkgJT4lIFxuICBzbGljZV9tYXgoaW5kaXZpZHVhbF9zaWdodGluZ3MsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSAlPiUgXG4gIHB1bGwoc3BlY2llc19hYmJyZXZpYXRpb24pXG4gIFxuYGBgIn0= -->
@@ -1809,7 +1834,9 @@ ships_birds_clean &lt;- read_csv(here(&quot;clean_data/ships_birds_clean.csv&quo
 <p>DIOANTEXU was the most common species abbreviation, with 5632
 individual sightings. This abbreviation is representative of the
 “Wandering Albatross”</p>
-<p>#Which bird had the highest total count?</p>
+</div>
+<div id="which-bird-had-the-highest-total-count" class="section level2">
+<h2>Which bird had the highest total count?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIFxuICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgXG4gIGFycmFuZ2UoZGVzYyh0b3RhbF9jb3VudCkpICU+JSBcbiAgc2xpY2VfbWF4KHRvdGFsX2NvdW50LCBuID0gMSwgd2l0aF90aWVzID0gVFJVRSkgJT4lIFxuICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKVxuYGBgIn0= -->
@@ -1828,7 +1855,9 @@ individual sightings. This abbreviation is representative of the
 <p>PUFTEN was the species abbreviation with the highest total count of
 sightings at 982553 total sightings. PUFTEN is representative of the
 short-tailed shearwater species.</p>
-<p>#Which bird had the highest total count above a latitude of -30?</p>
+</div>
+<div id="which-bird-had-the-highest-total-count-above-a-latitude-of--30" class="section level2">
+<h2>Which bird had the highest total count above a latitude of -30?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2hpcHNfYmlyZHNfY2xlYW4gJT4lIFxuICBmaWx0ZXIobGF0ID4gLTMwKSAlPiUgXG4gIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgXG4gIHN1bW1hcmlzZSh0b3RhbF9jb3VudCA9IHN1bShjb3VudCkpICU+JSBcbiAgYXJyYW5nZShkZXNjKHRvdGFsX2NvdW50KSkgJT4lIFxuICBzbGljZV9tYXgodG90YWxfY291bnQsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSBcbmBgYCJ9 -->
@@ -1850,8 +1879,10 @@ short-tailed shearwater species.</p>
 <!-- rnb-text-begin -->
 <p>The wedge-tailed shearwater was the bird with the highest count above
 a latitiude of -30 with a total count of 855</p>
-<p>#How many different types of birds were only ever seen in groups of
-1?</p>
+</div>
+<div id="how-many-different-types-of-birds-were-only-ever-seen-in-groups-of-1" class="section level2">
+<h2>How many different types of birds were only ever seen in groups of
+1?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zaGlwc19iaXJkc19jbGVhbiAlPiUgXG4gIHN1bW1hcmlzZShpbmRpdmlkdWFsX3NwZWNpZXMgPSBuX2Rpc3RpbmN0KHNwZWNpZXNfYWJicmV2aWF0aW9uKSlcblxuXG5zaGlwc19iaXJkc19jb3VudF8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSBcbiAgZmlsdGVyKGNvdW50ID09IDEpXG5cblxuc2hpcHNfYmlyZHNfZ3JlYXRlcl8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSBcbiAgZmlsdGVyKGNvdW50ID4gMSlcblxuXG5zaGlwc19iaXJkc19jb3VudF8xICU+JSBcbiAgYW50aV9qb2luKHNoaXBzX2JpcmRzX2dyZWF0ZXJfMSwgYnkgPSBcInNwZWNpZXNfYWJicmV2aWF0aW9uXCIpICU+JSBcbiAgc3VtbWFyaXNlKHNvbG9fc3BlY2llcyA9IG5fZGlzdGluY3Qoc3BlY2llc19hYmJyZXZpYXRpb24pKSAlPiUgXG4gIHB1bGwoKVxuXG5cbmBgYCJ9 -->
@@ -1897,10 +1928,39 @@ groups of one</p>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>In total 158 penguins were observed</p>
+</div>
+<div id="summary-of-analysis" class="section level1">
+<h1>Summary of Analysis</h1>
+<p>This file is an R notebook in which I performed various analysis on
+the previously cleaned data.</p>
+<p>After the clean data was loaded in and assigned to a dataframe I
+began analysis.</p>
+<p>My first question was looking at which species had been sighted on
+the most individual occasions. From my analysis I found that the
+wandering albatross was the bird that had the most individual sightings,
+with a count of 5632.</p>
+<p>My next question was looking at which bird had the highest total
+count over all of its sightings. From the data I found that the
+Short-Tailed Shearwater had the highest total count of 982553. Initially
+I felt this data could be suspicious, however, looking online at
+information on the species it is highly plausible this is accurate, it
+would maybe be worth contacting the provider of this data for more
+information</p>
+<p>I then looked at the highest count when the latitude was above -30.
+This lead to the Wedge-Tailed Shearwater being the highest counted
+species at only 855 total counts. This is interesting as when compared
+to the previous question it highlights perhaps a focus on one area of
+the globe in the data, which was maybe timed with a mass migration of
+Short-Tailed Shearwater</p>
+<p>I looked at birds which were only ever seen in groups of one and
+found that there were 23 distinct species that were only spotted alone,
+out of 152 distinct species across the data.</p>
+<p>I then looked at the amount of penguins observed in the data and
+found that 158 penguins were observed.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlyZHMgQW5hbHlzaXMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCgojIExvYWRpbmcgaW4gcGFja2FnZXMKYGBge3J9CmxpYnJhcnkobmFuaWFyKQoKbGlicmFyeSh0aWR5dmVyc2UpCgpsaWJyYXJ5KGphbml0b3IpCgpsaWJyYXJ5KHJlYWR4bCkKCmxpYnJhcnkoaGVyZSkKCmxpYnJhcnkoc3RyaW5ncikKYGBgCgoKCgojIFNvdXJjaW5nIGZyb20gdGhlIGNsZWFuaW5nIHNjcmlwdApgYGB7cn0Kc291cmNlKGhlcmUoImNsZWFuaW5nX3NjcmlwdF90YXNrXzMuUiIpKQpgYGAKCgoKCiNSZWFkaW5nIGluIGNsZWFuIGRhdGEgY3N2CgpgYGB7cn0KaGVyZSgpCgpzaGlwc19iaXJkc19jbGVhbiA8LSByZWFkX2NzdihoZXJlKCJjbGVhbl9kYXRhL3NoaXBzX2JpcmRzX2NsZWFuLmNzdiIpKQogIApgYGAKCgojV2hpY2ggYmlyZCBoYWQgdGhlIG1vc3QgaW5kaXZpZHVhbCBzaWdodGluZ3M/CgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKGluZGl2aWR1YWxfc2lnaHRpbmdzID0gbl9kaXN0aW5jdChyZWNvcmRfaWQpKSAlPiUgCiAgYXJyYW5nZShkZXNjKGluZGl2aWR1YWxfc2lnaHRpbmdzKSkgJT4lIAogIHNsaWNlX21heChpbmRpdmlkdWFsX3NpZ2h0aW5ncywgbiA9IDEsIHdpdGhfdGllcyA9IFRSVUUpICU+JSAKICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKQogIApgYGAKCkRJT0FOVEVYVSB3YXMgdGhlIG1vc3QgY29tbW9uIHNwZWNpZXMgYWJicmV2aWF0aW9uLCB3aXRoIDU2MzIgaW5kaXZpZHVhbCAKc2lnaHRpbmdzLiBUaGlzIGFiYnJldmlhdGlvbiBpcyByZXByZXNlbnRhdGl2ZSBvZiB0aGUgIldhbmRlcmluZyBBbGJhdHJvc3MiCgoKCiNXaGljaCBiaXJkIGhhZCB0aGUgaGlnaGVzdCB0b3RhbCBjb3VudD8KCgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKHRvdGFsX2NvdW50ID0gc3VtKGNvdW50KSkgJT4lIAogIGFycmFuZ2UoZGVzYyh0b3RhbF9jb3VudCkpICU+JSAKICBzbGljZV9tYXgodG90YWxfY291bnQsIG4gPSAxLCB3aXRoX3RpZXMgPSBUUlVFKSAlPiUgCiAgcHVsbChzcGVjaWVzX2FiYnJldmlhdGlvbikKYGBgCgpQVUZURU4gd2FzIHRoZSBzcGVjaWVzIGFiYnJldmlhdGlvbiB3aXRoIHRoZSBoaWdoZXN0IHRvdGFsIGNvdW50IG9mIHNpZ2h0aW5ncyBhdCAKOTgyNTUzIHRvdGFsIHNpZ2h0aW5ncy4gClBVRlRFTiBpcyByZXByZXNlbnRhdGl2ZSBvZiB0aGUgc2hvcnQtdGFpbGVkIHNoZWFyd2F0ZXIgc3BlY2llcy4KCgojV2hpY2ggYmlyZCBoYWQgdGhlIGhpZ2hlc3QgdG90YWwgY291bnQgYWJvdmUgYSBsYXRpdHVkZSBvZiAtMzA/CgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGZpbHRlcihsYXQgPiAtMzApICU+JSAKICBncm91cF9ieShzcGVjaWVzX2FiYnJldmlhdGlvbikgJT4lIAogIHN1bW1hcmlzZSh0b3RhbF9jb3VudCA9IHN1bShjb3VudCkpICU+JSAKICBhcnJhbmdlKGRlc2ModG90YWxfY291bnQpKSAlPiUgCiAgc2xpY2VfbWF4KHRvdGFsX2NvdW50LCBuID0gMSwgd2l0aF90aWVzID0gVFJVRSkgCmBgYAoKVGhlIHdlZGdlLXRhaWxlZCBzaGVhcndhdGVyIHdhcyB0aGUgYmlyZCB3aXRoIHRoZSBoaWdoZXN0IGNvdW50IGFib3ZlIGEgCmxhdGl0aXVkZSBvZiAtMzAgd2l0aCBhIHRvdGFsIGNvdW50IG9mIDg1NQoKCgoKCiNIb3cgbWFueSBkaWZmZXJlbnQgdHlwZXMgb2YgYmlyZHMgd2VyZSBvbmx5IGV2ZXIgc2VlbiBpbiBncm91cHMgb2YgMT8KCmBgYHtyfQoKc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIHN1bW1hcmlzZShpbmRpdmlkdWFsX3NwZWNpZXMgPSBuX2Rpc3RpbmN0KHNwZWNpZXNfYWJicmV2aWF0aW9uKSkKCgpzaGlwc19iaXJkc19jb3VudF8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoY291bnQgPT0gMSkKCgpzaGlwc19iaXJkc19ncmVhdGVyXzEgPC0gc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGZpbHRlcihjb3VudCA+IDEpCgoKc2hpcHNfYmlyZHNfY291bnRfMSAlPiUgCiAgYW50aV9qb2luKHNoaXBzX2JpcmRzX2dyZWF0ZXJfMSwgYnkgPSAic3BlY2llc19hYmJyZXZpYXRpb24iKSAlPiUgCiAgc3VtbWFyaXNlKHNvbG9fc3BlY2llcyA9IG5fZGlzdGluY3Qoc3BlY2llc19hYmJyZXZpYXRpb24pKSAlPiUgCiAgcHVsbCgpCgoKYGBgCgpJbiB0b3RhbCB0aGVyZSB3ZXJlIDIzIGRpc3RpbmN0IHNwZWNpZXMgdGhhdCB3ZXJlIG9ubHkgZXZlciBzZWVuIGluIGdyb3VwcyBvZiAKb25lCgoKIyBIb3cgbWFueSBwZW5ndWlucyB3ZXJlIHNlZW4/IAoKYGBge3J9CnNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoCiAgICAgIHN0cl9kZXRlY3Qoc3BlY2llc19jb21tb25fbmFtZV90YXhvbl9hZ2Vfc2V4X3BsdW1hZ2VfcGhhc2UsIAogICAgICAgICAgICAgICAgICIoP2kpcGVuZ3VpbiIpID09IFRSVUUpICU+JSAKICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgCiAgcHVsbCgpCgpgYGAKCkluIHRvdGFsIDE1OCBwZW5ndWlucyB3ZXJlIG9ic2VydmVkCgoKCgoKCgoKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGFzayAzIEFuYWx5c2lzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgoKIyMgTG9hZGluZyBpbiBwYWNrYWdlcwpgYGB7cn0KbGlicmFyeShuYW5pYXIpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmxpYnJhcnkoamFuaXRvcikKCmxpYnJhcnkocmVhZHhsKQoKbGlicmFyeShoZXJlKQoKbGlicmFyeShzdHJpbmdyKQpgYGAKCgoKCiMjIFNvdXJjaW5nIGZyb20gdGhlIGNsZWFuaW5nIHNjcmlwdAoKVGhpcyBmaWxlIGlzIGFuIFIgc2NyaXB0IGRlc2lnbmVkIHRvIHJlYWQgaW4gdGhlIHJhdyBkYXRhIGFib3V0IHNoaXBzCmFuZCBiaXJkIG9ic2VydmF0aW9ucywgYW5kIHRoZW4gY2xlYW4gdGhlIGRhdGEgc28gaXQgY2FuIGJlIGFuYWx5c2VkLgoKVGhlIHJhdyBkYXRhIGNvbnNpc3RlZCBvZiBmb3VyIHNoZWV0cyBpbiBhbiAueGxzIGZpbGUuIFRoZSBmaXJzdCBzaGVldApnYXZlIGluZm9ybWF0aW9uIGFib3V0IGFuIGluZGl2aWR1YWwgc2hpcHMgbG9jYXRpb24sIHNwZWVkLCBkYXRlLCB0aW1lLAphY3Rpdml0eSBhbmQgd2VhdGhlci4gVGhlIHNlY29uZCBzaGVldCBnYXZlIGluZm9ybWF0aW9uIGFib3V0IHRoZQpzcGVjaWVzIG9mIGJpcmQsIGFnZSwgZ2VuZGVyLCBudW1iZXIgc3BvdHRlZCwgcGx1bWFnZSwgYW5kIGhvdyB0aGV5IHdlcmUKc3BvdHRlZCAoZmx5aW5nLCBmbG9hdGluZyBldGMpLiBUaGUgb3RoZXIgdHdvIHNoZWV0cyBjb250YWluZWQgdGV4dApkZXNjcmlwdGlvbnMgb2YgdGhlIGFiYnJldmlhdGlvbnMgdXNlZCBpbiB0aGUgY29sdW1ucyBvZiB0aGUgZmlyc3QgdHdvCnNoZWV0cy4KCkZyb20gdGhpcyByYXcgZGF0YSwgSSBzdGFuZGFyZGlzZWQgbmFtZXMgaW50byBzbmFrZWNhc2Ugc3R5bGUsIGFuZApzZWxlY3RlZCBjb2x1bW5zIEkgZmVsdCB3b3VsZCBiZSB1c2VmdWwgaW4gYW5hbHlzaXMuIEZyb20gdGhlIGJpcmQgZGF0YQpJIHNlbGVjdGVkOiByZWNvcmQsIHJlY29yZCBpZCwgc3BlY2llcyBuYW1lLCBzcGVjaWVzIGFiYnJldmlhdGlvbiwgYW5kCnRoZSBjb3VudC4gRnJvbSB0aGUgc2hpcCBkYXRhIEkgc2VsZWN0ZWQ6IHJlY29yZCBpZCwgbGF0aXR1ZGUsIGFuZApsb25naXR1ZGUuIEkgdGhlbiBqb2luZWQgdGhlc2UgdHdvIHRhYmxlcyBieSB0aGUgcmVjb3JkIGlkLgoKTXkgYW5hbHlzaXMgd2FzIGZvY3Vzc2VkIG9uIGNvdW50IG9mIGJpcmRzIHNvIEkgcmVtb3ZlZCByb3dzIHdoZXJlIHRoZQpjb3VudCB3YXMgMCBvciBOQS4KClNvbWUgb2YgdGhlIHNwZWNpZXMgYWJicmV2aWF0aW9ucyBoYWQgYSBzbWFsbCBhYmJyZXZpYXRpb24gdG8gc2lnbmlmeQp0aGUgYWdlIG9mIHRoZSBiaXJkIHdoaWNoIEkgYWxzbyByZW1vdmVkIGFzIEkgd2FzIGludGVyZXN0ZWQgaW4gc3BlY2llcwphcyBhIHdob2xlLgoKSSB0aGVuIHdyb3RlIHRoZSBjbGVhbiBkYXRhIGFzIGEgLmNzdiBmaWxlIHRvIHVzZSBpbiBhbmFseXNpcy4KCmBgYHtyfQpzb3VyY2UoaGVyZSgiY2xlYW5pbmdfc2NyaXB0X3Rhc2tfMy5SIikpCmBgYAoKCgoKIyMgUmVhZGluZyBpbiBjbGVhbiBkYXRhIGNzdgoKYGBge3J9CmhlcmUoKQoKc2hpcHNfYmlyZHNfY2xlYW4gPC0gcmVhZF9jc3YoaGVyZSgiY2xlYW5fZGF0YS9zaGlwc19iaXJkc19jbGVhbi5jc3YiKSkKICAKYGBgCgoKIyMgV2hpY2ggYmlyZCBoYWQgdGhlIG1vc3QgaW5kaXZpZHVhbCBzaWdodGluZ3M/CgpgYGB7cn0Kc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGdyb3VwX2J5KHNwZWNpZXNfYWJicmV2aWF0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKGluZGl2aWR1YWxfc2lnaHRpbmdzID0gbl9kaXN0aW5jdChyZWNvcmRfaWQpKSAlPiUgCiAgYXJyYW5nZShkZXNjKGluZGl2aWR1YWxfc2lnaHRpbmdzKSkgJT4lIAogIHNsaWNlX21heChpbmRpdmlkdWFsX3NpZ2h0aW5ncywgbiA9IDEsIHdpdGhfdGllcyA9IFRSVUUpICU+JSAKICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKQogIApgYGAKCkRJT0FOVEVYVSB3YXMgdGhlIG1vc3QgY29tbW9uIHNwZWNpZXMgYWJicmV2aWF0aW9uLCB3aXRoIDU2MzIgaW5kaXZpZHVhbCAKc2lnaHRpbmdzLiBUaGlzIGFiYnJldmlhdGlvbiBpcyByZXByZXNlbnRhdGl2ZSBvZiB0aGUgIldhbmRlcmluZyBBbGJhdHJvc3MiCgoKCiMjIFdoaWNoIGJpcmQgaGFkIHRoZSBoaWdoZXN0IHRvdGFsIGNvdW50PwoKCmBgYHtyfQpzaGlwc19iaXJkc19jbGVhbiAlPiUgCiAgZ3JvdXBfYnkoc3BlY2llc19hYmJyZXZpYXRpb24pICU+JSAKICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgCiAgYXJyYW5nZShkZXNjKHRvdGFsX2NvdW50KSkgJT4lIAogIHNsaWNlX21heCh0b3RhbF9jb3VudCwgbiA9IDEsIHdpdGhfdGllcyA9IFRSVUUpICU+JSAKICBwdWxsKHNwZWNpZXNfYWJicmV2aWF0aW9uKQpgYGAKClBVRlRFTiB3YXMgdGhlIHNwZWNpZXMgYWJicmV2aWF0aW9uIHdpdGggdGhlIGhpZ2hlc3QgdG90YWwgY291bnQgb2Ygc2lnaHRpbmdzIGF0IAo5ODI1NTMgdG90YWwgc2lnaHRpbmdzLiAKUFVGVEVOIGlzIHJlcHJlc2VudGF0aXZlIG9mIHRoZSBzaG9ydC10YWlsZWQgc2hlYXJ3YXRlciBzcGVjaWVzLgoKCiMjIFdoaWNoIGJpcmQgaGFkIHRoZSBoaWdoZXN0IHRvdGFsIGNvdW50IGFib3ZlIGEgbGF0aXR1ZGUgb2YgLTMwPwoKYGBge3J9CnNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIobGF0ID4gLTMwKSAlPiUgCiAgZ3JvdXBfYnkoc3BlY2llc19hYmJyZXZpYXRpb24pICU+JSAKICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgCiAgYXJyYW5nZShkZXNjKHRvdGFsX2NvdW50KSkgJT4lIAogIHNsaWNlX21heCh0b3RhbF9jb3VudCwgbiA9IDEsIHdpdGhfdGllcyA9IFRSVUUpIApgYGAKClRoZSB3ZWRnZS10YWlsZWQgc2hlYXJ3YXRlciB3YXMgdGhlIGJpcmQgd2l0aCB0aGUgaGlnaGVzdCBjb3VudCBhYm92ZSBhIApsYXRpdGl1ZGUgb2YgLTMwIHdpdGggYSB0b3RhbCBjb3VudCBvZiA4NTUKCgoKCgojIyBIb3cgbWFueSBkaWZmZXJlbnQgdHlwZXMgb2YgYmlyZHMgd2VyZSBvbmx5IGV2ZXIgc2VlbiBpbiBncm91cHMgb2YgMT8KCmBgYHtyfQoKc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIHN1bW1hcmlzZShpbmRpdmlkdWFsX3NwZWNpZXMgPSBuX2Rpc3RpbmN0KHNwZWNpZXNfYWJicmV2aWF0aW9uKSkKCgpzaGlwc19iaXJkc19jb3VudF8xIDwtIHNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoY291bnQgPT0gMSkKCgpzaGlwc19iaXJkc19ncmVhdGVyXzEgPC0gc2hpcHNfYmlyZHNfY2xlYW4gJT4lIAogIGZpbHRlcihjb3VudCA+IDEpCgoKc2hpcHNfYmlyZHNfY291bnRfMSAlPiUgCiAgYW50aV9qb2luKHNoaXBzX2JpcmRzX2dyZWF0ZXJfMSwgYnkgPSAic3BlY2llc19hYmJyZXZpYXRpb24iKSAlPiUgCiAgc3VtbWFyaXNlKHNvbG9fc3BlY2llcyA9IG5fZGlzdGluY3Qoc3BlY2llc19hYmJyZXZpYXRpb24pKSAlPiUgCiAgcHVsbCgpCgoKYGBgCgpJbiB0b3RhbCB0aGVyZSB3ZXJlIDIzIGRpc3RpbmN0IHNwZWNpZXMgdGhhdCB3ZXJlIG9ubHkgZXZlciBzZWVuIGluIGdyb3VwcyBvZiAKb25lCgoKIyBIb3cgbWFueSBwZW5ndWlucyB3ZXJlIHNlZW4/IAoKYGBge3J9CnNoaXBzX2JpcmRzX2NsZWFuICU+JSAKICBmaWx0ZXIoCiAgICAgIHN0cl9kZXRlY3Qoc3BlY2llc19jb21tb25fbmFtZV90YXhvbl9hZ2Vfc2V4X3BsdW1hZ2VfcGhhc2UsIAogICAgICAgICAgICAgICAgICIoP2kpcGVuZ3VpbiIpID09IFRSVUUpICU+JSAKICBzdW1tYXJpc2UodG90YWxfY291bnQgPSBzdW0oY291bnQpKSAlPiUgCiAgcHVsbCgpCgpgYGAKCkluIHRvdGFsIDE1OCBwZW5ndWlucyB3ZXJlIG9ic2VydmVkCgoKIyBTdW1tYXJ5IG9mIEFuYWx5c2lzCgpUaGlzIGZpbGUgaXMgYW4gUiBub3RlYm9vayBpbiB3aGljaCBJIHBlcmZvcm1lZCB2YXJpb3VzIGFuYWx5c2lzIG9uIHRoZSAKcHJldmlvdXNseSBjbGVhbmVkIGRhdGEuCgpBZnRlciB0aGUgY2xlYW4gZGF0YSB3YXMgbG9hZGVkIGluIGFuZCBhc3NpZ25lZCB0byBhIGRhdGFmcmFtZSBJIGJlZ2FuIGFuYWx5c2lzLgoKTXkgZmlyc3QgcXVlc3Rpb24gd2FzIGxvb2tpbmcgYXQgd2hpY2ggc3BlY2llcyBoYWQgYmVlbiBzaWdodGVkIG9uIHRoZSBtb3N0IAppbmRpdmlkdWFsIG9jY2FzaW9ucy4gRnJvbSBteSBhbmFseXNpcyBJIGZvdW5kIHRoYXQgdGhlIHdhbmRlcmluZyBhbGJhdHJvc3MKd2FzIHRoZSBiaXJkIHRoYXQgaGFkIHRoZSBtb3N0IGluZGl2aWR1YWwgc2lnaHRpbmdzLCB3aXRoIGEgY291bnQgb2YgNTYzMi4KCk15IG5leHQgcXVlc3Rpb24gd2FzIGxvb2tpbmcgYXQgd2hpY2ggYmlyZCBoYWQgdGhlIGhpZ2hlc3QgdG90YWwgY291bnQgb3ZlciBhbGwgCm9mIGl0cyBzaWdodGluZ3MuIEZyb20gdGhlIGRhdGEgSSBmb3VuZCB0aGF0IHRoZSBTaG9ydC1UYWlsZWQgU2hlYXJ3YXRlciBoYWQKdGhlIGhpZ2hlc3QgdG90YWwgY291bnQgb2YgOTgyNTUzLiBJbml0aWFsbHkgSSBmZWx0IHRoaXMgZGF0YSBjb3VsZCBiZSAKc3VzcGljaW91cywgaG93ZXZlciwgbG9va2luZyBvbmxpbmUgYXQgaW5mb3JtYXRpb24gb24gdGhlIHNwZWNpZXMgaXQgaXMgaGlnaGx5IApwbGF1c2libGUgdGhpcyBpcyBhY2N1cmF0ZSwgaXQgd291bGQgbWF5YmUgYmUgd29ydGggY29udGFjdGluZyB0aGUgcHJvdmlkZXIgb2YKdGhpcyBkYXRhIGZvciBtb3JlIGluZm9ybWF0aW9uCgpJIHRoZW4gbG9va2VkIGF0IHRoZSBoaWdoZXN0IGNvdW50IHdoZW4gdGhlIGxhdGl0dWRlIHdhcyBhYm92ZSAtMzAuIFRoaXMgbGVhZAp0byB0aGUgV2VkZ2UtVGFpbGVkIFNoZWFyd2F0ZXIgYmVpbmcgdGhlIGhpZ2hlc3QgY291bnRlZCBzcGVjaWVzIGF0IG9ubHkgODU1CnRvdGFsIGNvdW50cy4gVGhpcyBpcyBpbnRlcmVzdGluZyBhcyB3aGVuIGNvbXBhcmVkIHRvIHRoZSBwcmV2aW91cyBxdWVzdGlvbiBpdCAKaGlnaGxpZ2h0cyBwZXJoYXBzIGEgZm9jdXMgb24gb25lIGFyZWEgb2YgdGhlIGdsb2JlIGluIHRoZSBkYXRhLCB3aGljaCB3YXMgbWF5YmUgCnRpbWVkIHdpdGggYSBtYXNzIG1pZ3JhdGlvbiBvZiBTaG9ydC1UYWlsZWQgU2hlYXJ3YXRlcgoKSSBsb29rZWQgYXQgYmlyZHMgd2hpY2ggd2VyZSBvbmx5IGV2ZXIgc2VlbiBpbiBncm91cHMgb2Ygb25lIGFuZCBmb3VuZCB0aGF0IAp0aGVyZSB3ZXJlIDIzIGRpc3RpbmN0IHNwZWNpZXMgdGhhdCB3ZXJlIG9ubHkgc3BvdHRlZCBhbG9uZSwgb3V0IG9mIDE1MiBkaXN0aW5jdApzcGVjaWVzIGFjcm9zcyB0aGUgZGF0YS4KCkkgdGhlbiBsb29rZWQgYXQgdGhlIGFtb3VudCBvZiBwZW5ndWlucyBvYnNlcnZlZCBpbiB0aGUgZGF0YSBhbmQgZm91bmQgdGhhdCAxNTgKcGVuZ3VpbnMgd2VyZSBvYnNlcnZlZC4KCgoKCgoKCgoK</div>
 
 
 

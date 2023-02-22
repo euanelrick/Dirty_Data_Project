@@ -1752,7 +1752,8 @@ display: none;
 
 
 <!-- rnb-text-begin -->
-<p>#Loading in packages</p>
+<div id="loading-in-packages" class="section level2">
+<h2>Loading in packages</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShuYW5pYXIpXG5cbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5saWJyYXJ5KGphbml0b3IpXG5cbmxpYnJhcnkocmVhZHIpXG5cbmxpYnJhcnkoaGVyZSlcblxubGlicmFyeShzdHJpbmdyKVxuYGBgIn0= -->
@@ -1770,7 +1771,14 @@ library(stringr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Sourcing cleaning script</p>
+</div>
+<div id="sourcing-cleaning-script" class="section level2">
+<h2>Sourcing cleaning script</h2>
+<p>This file is a .R script to clean the data from decathlon.rds file in
+the raw_data folder. I used clean_names() from the janitor package to
+turn my column names into snakecase. I then created a new column of the
+names of the athletes and converted these values to title. Finally i
+moved the ‘competition’ column to the second column of my dataset.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKGhlcmUoXCJjbGVhbmluZ19zY3JpcHRfdGFza18xLlJcIikpXG5gYGAifQ== -->
@@ -1778,15 +1786,19 @@ library(stringr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Reading in clean_data .csv file</p>
+</div>
+<div id="reading-in-clean-data-.csv-file" class="section level2">
+<h2>Reading in clean data .csv file</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoaGVyZShcImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdlwiKSlcbmBgYCJ9 -->
-<pre class="r"><code>read_csv(here(&quot;clean_data/decathlon_clean.csv&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVjYXRobG9uX2NsZWFuIDwtIHJlYWRfY3N2KGhlcmUoXCJjbGVhbl9kYXRhL2RlY2F0aGxvbl9jbGVhbi5jc3ZcIikpXG5gYGAifQ== -->
+<pre class="r"><code>decathlon_clean &lt;- read_csv(here(&quot;clean_data/decathlon_clean.csv&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Who had the longest long jump seen in the data?</p>
+</div>
+<div id="who-had-the-longest-long-jump-seen-in-the-data" class="section level2">
+<h2>Who had the longest long jump seen in the data?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVjYXRobG9uX2NsZWFuICU+JSBcbiAgc2VsZWN0KG5hbWUsIGxvbmdfanVtcCkgJT4lIFxuICBzbGljZV9tYXgobG9uZ19qdW1wLCB3aXRoX3RpZXMgPSBUUlVFKVxuYGBgIn0= -->
@@ -1797,17 +1809,25 @@ library(stringr)</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Clay had the longest long jump at 7.96m</p>
-<p>#What was the average 100m time in each competition?</p>
+</div>
+<div id="what-was-the-average-100m-time-in-each-competition" class="section level2">
+<h2>What was the average 100m time in each competition?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVjYXRobG9uX2NsZWFuICU+JSBcbiAgc3VtbWFyaXNlKGF2ZXJhZ2VfMTAwbSA9IG1lYW4oYDEwMG1gKSlcbmBgYCJ9 -->
-<pre class="r"><code>decathlon_clean %&gt;% 
-  summarise(average_100m = mean(`100m`))</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIyIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFQTzA0RE1SQ2RlTE5BRmhLUU9BUHBkaFdFaEtoUWlnaEtKQVJTcUpCeFRMRHcyaXV2dzZmTE1YSVhya0JCUWNFTnVFV1c4Y1l1c0F2UG16Y3piK1pkVDZZbjJUUURnQVM2aEVDU0lvVDA5dVlpUHdOa01PbEFGM291dm1IVElRSkhIclJ4VTlpWmNFWnJTMDNJcitSN1dRbDJpWGpnK3NiRHU4OWt1UG9hSDMzL0xEL09meVBoVk5HUzE1SG9MdE5seGEyd1FpdFA3ZEVYYnVpYzN4K1BSbVdrMFRQNnRRZzZmYWV6eEs5cG1uVzhqRWxhaDJXQnpHYlUwdUxSNER4bThjaTJydHdWT0VTYy9UUWE3cGlJMkY4b2Q4a3NaMDhMOVp5ZnVnVnRlZlA2SHBQLzJLMGtqWmRLdmRRV1YzT2hlTGhkMGdjdWZUSkF4NjNob2pKQzJlQUUyYnF3MnRMUWx6RXRBOU42Zy9VZjVETkdsUFVCQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["competition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["average_100m"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Decastar","2":"11.17538"},{"1":"OlympicG","2":"10.91571"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Average 100 meter time was 11.0</p>
-<p>#Who had the highest total points across both competitions?</p>
+<p>Average 100 meter time was 11.2 in the Decastar competiton and 10.9
+in the OlympicG competition</p>
+</div>
+<div id="who-had-the-highest-total-points-across-both-competitions" class="section level2">
+<h2>Who had the highest total points across both competitions?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTJRM3c3Qk1CakZQN1VTRXlMeEhOc0ZONjVGUElBL2lUdXBLUmJWU2x2aDBsTjZISHl0TnBFMjJYYjYyODVPejdlWWJjYjVKZ2VBSm1TRVFKT2lCTHBlellzSklNRk5BekxvdU9jRFB4cWljSER3OTZLMTVEc3RPS3FlcHpCOUpWWXEyWVdiWUNNQlpnNEczYlhLTXJFMWxkSTg4WGEwdXBmUjd3TElFMjhmWEdsSUpaZ3h5ZG55UGJPc1BHZ1hCZkJPTEcxMXRiV1NhQ0t1R0UzTURaMkF3VTI2ayt5TDZuU1Q1MkkwY2dtL3puNkYvdjZLbXZ3eXlTZjhpOGFwY1htc1pSd0FGV3pIUmRqMHNiSnZYRjUxTFcyc2d0U1VmbENSVkVwRTRzdkIrd3Z3RCs0MDBBRUFBQT09In0= -->
@@ -1821,8 +1841,10 @@ library(stringr)</code></pre>
 <!-- rnb-text-begin -->
 <p>Sebrle had the highest score across both competitions with 17110
 points</p>
-<p>#What was the shot-put scores for the top three competitors in each
-competition?</p>
+</div>
+<div id="what-was-the-shot-put-scores-for-the-top-three-competitors-in-each-competition" class="section level2">
+<h2>What was the shot-put scores for the top three competitors in each
+competition?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjYsIm5jb2wiOjE0LCJzdW1tYXJ5Ijp7IkEgdGliYmxlIjpbIjYgw5cgMTQiXSwiR3JvdXBzIjpbImNvbXBldGl0aW9uIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE0MVVQVXdVUVJTZSs5a1Rqa2dRem9KRU9EVUJNYkRIWFU0U295R1pBcmtsaEJCUUUweElMc1BlM3QzQzN1N2U3QzRLV3REWTJOQVpzVEF4TkZZME5qUTJHbU9qbFlXTk1WSlphR0dEaFFYbi9PNGVWem5KN0p0NTg3MzN2dmZlekM3UHJCVFRLMmtBUUFJazQzR1FVTWdTS0hmdnpLclhBZEdRVFF3a1FUZVZEd2hvZ0N4Nnlld2pNeVVPVXZjQ3ZPRnN5dDF0WXcxYmh0ek5JK3orMTVteWdIUmppNFE0eTF6VHVOR01SL01VcDVSbGJCcVdKd2pGaGJacnh0Q1I1eU1zOTR2V1ZzTTE5VktIdGFKYnlKUEdvY3NxMG4wSGs5V0p5RFVGUnc4eTIwZWxBempLUkFhT3BxZmQvUzlwT1BLNlNBY2NBV3pBa1E4VXFJVjJGMWJIanQvdXJzTGhwWitQaHcrWDRWQ1I0N05DbjJWdXB1RVE5YnA5Rk5ybEVOdEQ5UldGWFlYcUV4NHZMK3dtdndvWmtPL1luOUFPZktUakV3UzdEQWlCaUF1T0dRNkNRNmFBTWM0anRKdWI0dWZhRDhZZmFwUGNYc3Z4dkVzMW9YL0U0a1k4WDFDSFdhZ0t2aE1DUHpHNFI4WnpPUDZicHRlRTZqRERoWGFsU3h4LzZ6dXZtN2JGOFpySWIrNHpyNU0yVHRndS9RcnQrbm1kWUViMFlVRDBKU1BxMzE5bEE1N2JZLzVDdTBXUjkrSXpMdWV1OEh5V1huSi84KzhaUWJod2c3cDlHTm8xWjdrL2ZKUHp3ZSs0Yk81d25rM0U2K1krbGZuSnk2dUlpNXRvazhub1BGc0I0T0lna2ZzQVhINUQ1bm15Lzhhdlo2TFZjU1BURmVTalhCV2podEZ4Z2J1eGN6OW5FNzBuWE1kM3lLZlZhdjN0dk9rUzFNZHk0OG9rVllwMWorNDBYTU0zZmRPeDVYRWhuMi9JUUpaajE4cnJRY09WVDhxck8zN1pEWHdKcUp1MWVqc2dlUzJ5N2lrVThvMXlQY0NWNk8xWFRFOFBQSm1oNjFoR2VSTUZsdlRYdFk3SXd6WnRpVmNLVTVHL0pFYjJoblRrT3FidGUveTVuc3I1ak9QU2JNaFJmRUIwcEwycU1keWg2QXRzV3BDS3F0Y0RlME10NWlreDBUNGc2aHNUN1pYclhoNVRrUzFUSkN2RHJyV1J0OUNhWVlsTkwra1o2MGJPeFlTNXJBRFJlam5mOFpIRXBYWEhraHIrTHpyNUI4WWZnM090QlFBQSJ9 -->
@@ -1838,8 +1860,10 @@ competition?</p>
 15.19, 14.83, and 14.77</p>
 <p>In the OlympicG the top three shot-put scores were: 16.36, 15.93, and
 15.73</p>
-<p>#What was the average points for competitors who ran the 400m in less
-than 50 seconds vs. those than ran 400m in more than 50 seconds?</p>
+</div>
+<div id="what-was-the-average-points-for-competitors-who-ran-the-400m-in-less-than-50-seconds-vs.-those-than-ran-400m-in-more-than-50-seconds" class="section level2">
+<h2>What was the average points for competitors who ran the 400m in less
+than 50 seconds vs. those than ran 400m in more than 50 seconds?</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIyIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFRd1VvRE1SQ2RUUnVsd1phS2Z5SHNLbGpCWXcvaUI0aENiMHZjeG5ZeEprdVNxdURGci9BWGhQVUg5R0wvck90a1RRN21rcng1ekhzemI2NHZGMmRzd1FCZ0FFTkNZRUFSQXIyOXVjb3ZBQmtzTWhqQ3lQOHYySFNFd0pNcy9OQTNBRXg4UGY4NU9XN2I5bk8rL1hwOVAvejRUZ3lvNG8vQ0lwajI0ai95UUFwclM3Zm1xancvRGR5RVB3bkRWNkpzZEsyY1RXeEdSajhYMFdyc3JkN3c2YnB1bDg2ckpMZHhYaVRaa2p0ZTNCdlVZNVZLOW5YamFxMVFSSHhTbW9nemt4RFRqZktiTFBOcXZWRVArV3dXVHBPRjA0d0RKdit4bjBtNjRFV0QxNTVRcTFxSnVMemtkMExHZzJEa1BuSFJHTHhJaklLc0xaeDJQUGF4U3N2STlPRmc5d3N0UVI2VjRRRUFBQT09In0= -->
@@ -1854,9 +1878,32 @@ than 50 seconds vs. those than ran 400m in more than 50 seconds?</p>
 <p>For those that ran the 400m in less than 50 seconds the average
 points were 8120 And for those that ran the 400m in over 50 seconds the
 average points were 7727</p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>This file is an R notebook in which i performed analysis on the data
+i had cleaned in the cleaning_script_task_1.R file.</p>
+<p>I first looked at who had the longest long jump in the dataset and
+found it was Clay who had a longest jump of 7.96m</p>
+<p>I then looked to see the average 100 meter times in each competition
+and found that the average 100 meter time was 11.2 seconds in the
+Decastar competiton and 10.9 seconds in the OlympicG competition.</p>
+<p>I looked to see who had the highest points total across both
+competitions and found it was Sebrle who had the highest total with
+17110 points.</p>
+<p>In each competition I looked to see who had the top three shot-put
+scores and found in the decastar competition the top three scores for
+shot-put were: 15.19m, 14.83m, and 14.77m, and in the OlympicG the top
+three shot-put scores were: 16.36m, 15.93m, and 15.73m.</p>
+<p>Finally, I looked to see what the average scores were for those who
+ran the 400 meters in less than 50 seconds and those who ran it in
+longer than 50 seconds. I found that those who ran it in under 50
+seconds scored 8120 points on average, and those who ran it in over 50
+seconds scored 7727 points on average.</p>
 <!-- rnb-text-end -->
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGFzayAxIEFuYWx5c2lzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiNMb2FkaW5nIGluIHBhY2thZ2VzCgpgYGB7cn0KbGlicmFyeShuYW5pYXIpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmxpYnJhcnkoamFuaXRvcikKCmxpYnJhcnkocmVhZHIpCgpsaWJyYXJ5KGhlcmUpCgpsaWJyYXJ5KHN0cmluZ3IpCmBgYAoKI1NvdXJjaW5nIGNsZWFuaW5nIHNjcmlwdAoKYGBge3J9CnNvdXJjZShoZXJlKCJjbGVhbmluZ19zY3JpcHRfdGFza18xLlIiKSkKYGBgCgoKI1JlYWRpbmcgaW4gY2xlYW5fZGF0YSAuY3N2IGZpbGUKYGBge3J9CnJlYWRfY3N2KGhlcmUoImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdiIpKQpgYGAKCgojV2hvIGhhZCB0aGUgbG9uZ2VzdCBsb25nIGp1bXAgc2VlbiBpbiB0aGUgZGF0YT8KCmBgYHtyfQpkZWNhdGhsb25fY2xlYW4gJT4lIAogIHNlbGVjdChuYW1lLCBsb25nX2p1bXApICU+JSAKICBzbGljZV9tYXgobG9uZ19qdW1wLCB3aXRoX3RpZXMgPSBUUlVFKQpgYGAKQ2xheSBoYWQgdGhlIGxvbmdlc3QgbG9uZyBqdW1wIGF0IDcuOTZtCgoKI1doYXQgd2FzIHRoZSBhdmVyYWdlIDEwMG0gdGltZSBpbiBlYWNoIGNvbXBldGl0aW9uPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfMTAwbSA9IG1lYW4oYDEwMG1gKSkKYGBgCkF2ZXJhZ2UgMTAwIG1ldGVyIHRpbWUgd2FzIDExLjAKCgojV2hvIGhhZCB0aGUgaGlnaGVzdCB0b3RhbCBwb2ludHMgYWNyb3NzIGJvdGggY29tcGV0aXRpb25zPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgZ3JvdXBfYnkobmFtZSkgJT4lIAogIHN1bW1hcmlzZSh0b3RhbF9zY29yZSA9IHN1bShwb2ludHMpKSAlPiUgCiAgc2xpY2VfbWF4KHRvdGFsX3Njb3JlLCB3aXRoX3RpZXMgPSBUUlVFKQpgYGAKU2VicmxlIGhhZCB0aGUgaGlnaGVzdCBzY29yZSBhY3Jvc3MgYm90aCBjb21wZXRpdGlvbnMgd2l0aCAxNzExMCBwb2ludHMKCgojV2hhdCB3YXMgdGhlIHNob3QtcHV0IHNjb3JlcyBmb3IgdGhlIHRvcCB0aHJlZSBjb21wZXRpdG9ycyBpbiBlYWNoIGNvbXBldGl0aW9uPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgZ3JvdXBfYnkoY29tcGV0aXRpb24pICU+JSAKICBzbGljZV9tYXgoc2hvdF9wdXQsIG49Mywgd2l0aF90aWVzID0gVFJVRSkKYGBgCgpJbiB0aGUgZGVjYXN0YXIgY29tcGV0aXRpb24gdGhlIHRvcCB0aHJlZSBzY29yZXMgZm9yIHNob3QtcHV0IHdlcmU6IDE1LjE5LCAKMTQuODMsIGFuZCAxNC43NwoKSW4gdGhlIE9seW1waWNHIHRoZSB0b3AgdGhyZWUgc2hvdC1wdXQgc2NvcmVzIHdlcmU6IDE2LjM2LCAxNS45MywgYW5kIDE1LjczCgoKI1doYXQgd2FzIHRoZSBhdmVyYWdlIHBvaW50cyBmb3IgY29tcGV0aXRvcnMgd2hvIHJhbiB0aGUgNDAwbSBpbiBsZXNzIHRoYW4gNTAgCnNlY29uZHMgdnMuIHRob3NlIHRoYW4gcmFuIDQwMG0gaW4gbW9yZSB0aGFuIDUwIHNlY29uZHM/CgpgYGB7cn0KZGVjYXRobG9uX2NsZWFuICU+JSAKICBtdXRhdGUoCiAgICBsZXNzX3RoYW5fNTAgPSBjYXNlX3doZW4oCiAgICAgIGA0MDBtYCA8IDUwIH4gVFJVRSwKICAgICAgYDQwMG1gID4gNTAgfiBGQUxTRQogICkpICU+JSAKICBncm91cF9ieShsZXNzX3RoYW5fNTApICU+JSAKICBzdW1tYXJpc2UoYXZlcmFnZV9wb2ludHMgPSBtZWFuKHBvaW50cykpCmBgYAoKRm9yIHRob3NlIHRoYXQgcmFuIHRoZSA0MDBtIGluIGxlc3MgdGhhbiA1MCBzZWNvbmRzIHRoZSBhdmVyYWdlIHBvaW50cyB3ZXJlIDgxMjAKQW5kIGZvciB0aG9zZSB0aGF0IHJhbiB0aGUgNDAwbSBpbiBvdmVyIDUwIHNlY29uZHMgdGhlIGF2ZXJhZ2UgcG9pbnRzIHdlcmUgNzcyNwo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGFzayAxIEFuYWx5c2lzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyBMb2FkaW5nIGluIHBhY2thZ2VzCgpgYGB7cn0KbGlicmFyeShuYW5pYXIpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKCmxpYnJhcnkoamFuaXRvcikKCmxpYnJhcnkocmVhZHIpCgpsaWJyYXJ5KGhlcmUpCgpsaWJyYXJ5KHN0cmluZ3IpCmBgYAoKIyMgU291cmNpbmcgY2xlYW5pbmcgc2NyaXB0CgpUaGlzIGZpbGUgaXMgYSAuUiBzY3JpcHQgdG8gY2xlYW4gdGhlIGRhdGEgZnJvbSBkZWNhdGhsb24ucmRzIGZpbGUgaW4gdGhlIApyYXdfZGF0YSBmb2xkZXIuIEkgdXNlZCBjbGVhbl9uYW1lcygpIGZyb20gdGhlIGphbml0b3IgcGFja2FnZSB0byB0dXJuIG15IGNvbHVtbiAKbmFtZXMgaW50byBzbmFrZWNhc2UuIEkgdGhlbiBjcmVhdGVkIGEgbmV3IGNvbHVtbiBvZiB0aGUgbmFtZXMgb2YgdGhlIGF0aGxldGVzCmFuZCBjb252ZXJ0ZWQgdGhlc2UgdmFsdWVzIHRvIHRpdGxlLiBGaW5hbGx5IGkgbW92ZWQgdGhlICdjb21wZXRpdGlvbicgY29sdW1uIHRvIAp0aGUgc2Vjb25kIGNvbHVtbiBvZiBteSBkYXRhc2V0LgoKYGBge3J9CnNvdXJjZShoZXJlKCJjbGVhbmluZ19zY3JpcHRfdGFza18xLlIiKSkKYGBgCgoKIyMgUmVhZGluZyBpbiBjbGVhbiBkYXRhIC5jc3YgZmlsZQpgYGB7cn0KZGVjYXRobG9uX2NsZWFuIDwtIHJlYWRfY3N2KGhlcmUoImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdiIpKQpgYGAKCgojIyBXaG8gaGFkIHRoZSBsb25nZXN0IGxvbmcganVtcCBzZWVuIGluIHRoZSBkYXRhPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgc2VsZWN0KG5hbWUsIGxvbmdfanVtcCkgJT4lIAogIHNsaWNlX21heChsb25nX2p1bXAsIHdpdGhfdGllcyA9IFRSVUUpCmBgYApDbGF5IGhhZCB0aGUgbG9uZ2VzdCBsb25nIGp1bXAgYXQgNy45Nm0KCgojIyBXaGF0IHdhcyB0aGUgYXZlcmFnZSAxMDBtIHRpbWUgaW4gZWFjaCBjb21wZXRpdGlvbj8KCmBgYHtyfQpkZWNhdGhsb25fY2xlYW4gJT4lIAogIGdyb3VwX2J5KGNvbXBldGl0aW9uKSAlPiUgCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfMTAwbSA9IG1lYW4oYDEwMG1gKSkKYGBgCkF2ZXJhZ2UgMTAwIG1ldGVyIHRpbWUgd2FzIDExLjIgaW4gdGhlIERlY2FzdGFyIGNvbXBldGl0b24gYW5kIDEwLjkgaW4gdGhlIApPbHltcGljRyBjb21wZXRpdGlvbgoKCiMjIFdobyBoYWQgdGhlIGhpZ2hlc3QgdG90YWwgcG9pbnRzIGFjcm9zcyBib3RoIGNvbXBldGl0aW9ucz8KCmBgYHtyfQpkZWNhdGhsb25fY2xlYW4gJT4lIAogIGdyb3VwX2J5KG5hbWUpICU+JSAKICBzdW1tYXJpc2UodG90YWxfc2NvcmUgPSBzdW0ocG9pbnRzKSkgJT4lIAogIHNsaWNlX21heCh0b3RhbF9zY29yZSwgd2l0aF90aWVzID0gVFJVRSkKYGBgClNlYnJsZSBoYWQgdGhlIGhpZ2hlc3Qgc2NvcmUgYWNyb3NzIGJvdGggY29tcGV0aXRpb25zIHdpdGggMTcxMTAgcG9pbnRzCgoKIyMgV2hhdCB3YXMgdGhlIHNob3QtcHV0IHNjb3JlcyBmb3IgdGhlIHRvcCB0aHJlZSBjb21wZXRpdG9ycyBpbiBlYWNoIGNvbXBldGl0aW9uPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgZ3JvdXBfYnkoY29tcGV0aXRpb24pICU+JSAKICBzbGljZV9tYXgoc2hvdF9wdXQsIG49Mywgd2l0aF90aWVzID0gVFJVRSkKYGBgCgpJbiB0aGUgZGVjYXN0YXIgY29tcGV0aXRpb24gdGhlIHRvcCB0aHJlZSBzY29yZXMgZm9yIHNob3QtcHV0IHdlcmU6IDE1LjE5LCAKMTQuODMsIGFuZCAxNC43NwoKSW4gdGhlIE9seW1waWNHIHRoZSB0b3AgdGhyZWUgc2hvdC1wdXQgc2NvcmVzIHdlcmU6IDE2LjM2LCAxNS45MywgYW5kIDE1LjczCgoKIyMgV2hhdCB3YXMgdGhlIGF2ZXJhZ2UgcG9pbnRzIGZvciBjb21wZXRpdG9ycyB3aG8gcmFuIHRoZSA0MDBtIGluIGxlc3MgdGhhbiA1MCBzZWNvbmRzIHZzLiB0aG9zZSB0aGFuIHJhbiA0MDBtIGluIG1vcmUgdGhhbiA1MCBzZWNvbmRzPwoKYGBge3J9CmRlY2F0aGxvbl9jbGVhbiAlPiUgCiAgbXV0YXRlKAogICAgbGVzc190aGFuXzUwID0gY2FzZV93aGVuKAogICAgICBgNDAwbWAgPCA1MCB+IFRSVUUsCiAgICAgIGA0MDBtYCA+IDUwIH4gRkFMU0UKICApKSAlPiUgCiAgZ3JvdXBfYnkobGVzc190aGFuXzUwKSAlPiUgCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfcG9pbnRzID0gbWVhbihwb2ludHMpKQpgYGAKCkZvciB0aG9zZSB0aGF0IHJhbiB0aGUgNDAwbSBpbiBsZXNzIHRoYW4gNTAgc2Vjb25kcyB0aGUgYXZlcmFnZSBwb2ludHMgd2VyZSA4MTIwCkFuZCBmb3IgdGhvc2UgdGhhdCByYW4gdGhlIDQwMG0gaW4gb3ZlciA1MCBzZWNvbmRzIHRoZSBhdmVyYWdlIHBvaW50cyB3ZXJlIDc3MjcKCgojIyBBbmFseXNpcwoKVGhpcyBmaWxlIGlzIGFuIFIgbm90ZWJvb2sgaW4gd2hpY2ggaSBwZXJmb3JtZWQgYW5hbHlzaXMgb24gdGhlIGRhdGEgaSBoYWQgCmNsZWFuZWQgaW4gdGhlIGNsZWFuaW5nX3NjcmlwdF90YXNrXzEuUiBmaWxlLgoKSSBmaXJzdCBsb29rZWQgYXQgd2hvIGhhZCB0aGUgbG9uZ2VzdCBsb25nIGp1bXAgaW4gdGhlIGRhdGFzZXQgYW5kIGZvdW5kIGl0IHdhcwpDbGF5IHdobyBoYWQgYSBsb25nZXN0IGp1bXAgb2YgNy45Nm0KCkkgdGhlbiBsb29rZWQgdG8gc2VlIHRoZSBhdmVyYWdlIDEwMCBtZXRlciB0aW1lcyBpbiBlYWNoIGNvbXBldGl0aW9uIGFuZCBmb3VuZCAKdGhhdCB0aGUgYXZlcmFnZSAxMDAgbWV0ZXIgdGltZSB3YXMgMTEuMiBzZWNvbmRzIGluIHRoZSBEZWNhc3RhciBjb21wZXRpdG9uIGFuZCAKMTAuOSBzZWNvbmRzIGluIHRoZSBPbHltcGljRyBjb21wZXRpdGlvbi4KCkkgbG9va2VkIHRvIHNlZSB3aG8gaGFkIHRoZSBoaWdoZXN0IHBvaW50cyB0b3RhbCBhY3Jvc3MgYm90aCBjb21wZXRpdGlvbnMgYW5kIApmb3VuZCBpdCB3YXMgU2VicmxlIHdobyBoYWQgdGhlIGhpZ2hlc3QgdG90YWwgd2l0aCAxNzExMCBwb2ludHMuCgpJbiBlYWNoIGNvbXBldGl0aW9uIEkgbG9va2VkIHRvIHNlZSB3aG8gaGFkIHRoZSB0b3AgdGhyZWUgc2hvdC1wdXQgc2NvcmVzIGFuZApmb3VuZCBpbiB0aGUgZGVjYXN0YXIgY29tcGV0aXRpb24gdGhlIHRvcCB0aHJlZSBzY29yZXMgZm9yIHNob3QtcHV0IHdlcmU6IDE1LjE5bSwgCjE0LjgzbSwgYW5kIDE0Ljc3bSwgYW5kIGluIHRoZSBPbHltcGljRyB0aGUgdG9wIHRocmVlIHNob3QtcHV0IHNjb3JlcyB3ZXJlOiAKMTYuMzZtLCAxNS45M20sIGFuZCAxNS43M20uCgpGaW5hbGx5LCBJIGxvb2tlZCB0byBzZWUgd2hhdCB0aGUgYXZlcmFnZSBzY29yZXMgd2VyZSBmb3IgdGhvc2Ugd2hvIHJhbiB0aGUgNDAwCm1ldGVycyBpbiBsZXNzIHRoYW4gNTAgc2Vjb25kcyBhbmQgdGhvc2Ugd2hvIHJhbiBpdCBpbiBsb25nZXIgdGhhbiA1MCBzZWNvbmRzLgpJIGZvdW5kIHRoYXQgdGhvc2Ugd2hvIHJhbiBpdCBpbiB1bmRlciA1MCBzZWNvbmRzIHNjb3JlZCA4MTIwIHBvaW50cyBvbiBhdmVyYWdlLAphbmQgdGhvc2Ugd2hvIHJhbiBpdCBpbiBvdmVyIDUwIHNlY29uZHMgc2NvcmVkIDc3MjcgcG9pbnRzIG9uIGF2ZXJhZ2UuCgo=</div>
 
 
 

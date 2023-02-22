@@ -2,7 +2,8 @@
 title: "Task 1 Analysis"
 output: html_notebook
 ---
-#Loading in packages
+
+## Loading in packages
 
 ```{r}
 library(naniar)
@@ -18,20 +19,26 @@ library(here)
 library(stringr)
 ```
 
-#Sourcing cleaning script
+## Sourcing cleaning script
+
+This file is a .R script to clean the data from decathlon.rds file in the 
+raw_data folder. I used clean_names() from the janitor package to turn my column 
+names into snakecase. I then created a new column of the names of the athletes
+and converted these values to title. Finally i moved the 'competition' column to 
+the second column of my dataset.
 
 ```{r}
 source(here("cleaning_script_task_1.R"))
 ```
 
 
-#Reading in clean_data .csv file
+## Reading in clean data .csv file
 ```{r}
-read_csv(here("clean_data/decathlon_clean.csv"))
+decathlon_clean <- read_csv(here("clean_data/decathlon_clean.csv"))
 ```
 
 
-#Who had the longest long jump seen in the data?
+## Who had the longest long jump seen in the data?
 
 ```{r}
 decathlon_clean %>% 
@@ -41,16 +48,18 @@ decathlon_clean %>%
 Clay had the longest long jump at 7.96m
 
 
-#What was the average 100m time in each competition?
+## What was the average 100m time in each competition?
 
 ```{r}
 decathlon_clean %>% 
+  group_by(competition) %>% 
   summarise(average_100m = mean(`100m`))
 ```
-Average 100 meter time was 11.0
+Average 100 meter time was 11.2 in the Decastar competiton and 10.9 in the 
+OlympicG competition
 
 
-#Who had the highest total points across both competitions?
+## Who had the highest total points across both competitions?
 
 ```{r}
 decathlon_clean %>% 
@@ -61,7 +70,7 @@ decathlon_clean %>%
 Sebrle had the highest score across both competitions with 17110 points
 
 
-#What was the shot-put scores for the top three competitors in each competition?
+## What was the shot-put scores for the top three competitors in each competition?
 
 ```{r}
 decathlon_clean %>% 
@@ -75,8 +84,7 @@ In the decastar competition the top three scores for shot-put were: 15.19,
 In the OlympicG the top three shot-put scores were: 16.36, 15.93, and 15.73
 
 
-#What was the average points for competitors who ran the 400m in less than 50 
-seconds vs. those than ran 400m in more than 50 seconds?
+## What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
 
 ```{r}
 decathlon_clean %>% 
@@ -91,3 +99,30 @@ decathlon_clean %>%
 
 For those that ran the 400m in less than 50 seconds the average points were 8120
 And for those that ran the 400m in over 50 seconds the average points were 7727
+
+
+## Analysis
+
+This file is an R notebook in which i performed analysis on the data i had 
+cleaned in the cleaning_script_task_1.R file.
+
+I first looked at who had the longest long jump in the dataset and found it was
+Clay who had a longest jump of 7.96m
+
+I then looked to see the average 100 meter times in each competition and found 
+that the average 100 meter time was 11.2 seconds in the Decastar competiton and 
+10.9 seconds in the OlympicG competition.
+
+I looked to see who had the highest points total across both competitions and 
+found it was Sebrle who had the highest total with 17110 points.
+
+In each competition I looked to see who had the top three shot-put scores and
+found in the decastar competition the top three scores for shot-put were: 15.19m, 
+14.83m, and 14.77m, and in the OlympicG the top three shot-put scores were: 
+16.36m, 15.93m, and 15.73m.
+
+Finally, I looked to see what the average scores were for those who ran the 400
+meters in less than 50 seconds and those who ran it in longer than 50 seconds.
+I found that those who ran it in under 50 seconds scored 8120 points on average,
+and those who ran it in over 50 seconds scored 7727 points on average.
+

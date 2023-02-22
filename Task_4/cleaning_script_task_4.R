@@ -143,32 +143,34 @@ candy_2017_trimmed <- candy_2017 %>%
                names_to = "candy_type",
                values_to = "opinion") %>% 
   filter(is.na(opinion) == FALSE) %>% 
-  mutate(candy_type = str_remove(candy_type, "^(q6_)")) 
+  mutate(candy_type = str_remove(candy_type, "^(q6_)")) %>% 
+  mutate(country = str_to_lower(country)) %>% 
+  mutate(country = str_replace_all(country, "[[:punct:]]", ""))
 
 
 # Cleaning country column in 2017 data ------------------------------------
 
 
-candy_2017_trimmed$country <-  str_to_title(candy_2017_trimmed$country)
 
 candy_2017_trimmed <- 
   candy_2017_trimmed %>% 
   mutate(country = case_when(
-    country %in% c("Usa", "US", "Murica", "United States", "United Staes",
-                   "United States Of America", "U.s.a", "Usausausa", "America",
-                   "Us Of A", "Unites States", "The United States", "North Carolina",
-                   "U S", "U.s.", "The United States Of America", 
-                   "Usa? Hard To Tell Anymore..", "'Merica", "Pittsburgh",
-                   "United State", "New York", "Trumpistan", "United Sates",
-                   "California", "I Pretend To Be From Canada, But I Am Really 
-                   From The United States.", "New Jersey", "United Stated", 
-                   "United Statss", "Murrika", "N. America", "Ussa", "U S A", 
-                   "United Statea", "Usa Usa Usa!!!!")
+    country %in% c("usa","US", "us", "murica", "united states", "united staes",
+                   "united states of america", "usausausa", "america", "us of a",
+                   "unites states", "the united states", "north carolina", "u s",
+                   "the united states of america", "usa hard to tell anymore",
+                   "merica", "pittsburgh", "united state", "new york", 
+                   "trumpistan", "united sates", "california", 
+                   "i pretend to be from canada but i am really from the united states",
+                   "new jersey", "united stated", "united statss", "murrika",
+                   "n america", "ussa", "u s a", "united statea", "usa usa usa")
+
     == TRUE ~ "US",
     
-    country %in% c("Canada", "Can", "Canada`") == TRUE ~ "Canada",
+    country %in% c("Canada", "can", "canada", "canada`") == TRUE ~ "Canada",
     
-    country %in% c("Uk", "United Kingdom", "England", "Scotland") == TRUE ~ "UK",
+    country %in% c("UK", "uk", "united kingdom", "england", "scotland") 
+    == TRUE ~ "UK",
     
     is.na(country)  ~ as.character(NA),
     
