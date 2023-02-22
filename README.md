@@ -13,7 +13,9 @@ undertake analysis on the cleaned data
 The project structure consists of three folders each representing a different
 task. In this case: Task 1, Task 3, and Task 4
 
-Task 1 is an analysis of athletes data from decathlon competitions
+Task 1 is an analysis of athletes data from decathlon competitions. 
+
+Task 2 is an analysis of ingredients used for baking cakes.
 
 Task 3 is an analysis of different bird sightings.
 

@@ -1,0 +1,126 @@
+---
+title: "Cake Analysis"
+output: html_notebook
+---
+
+## Loading in packages
+
+```{r}
+library(naniar)
+
+library(tidyverse)
+
+library(janitor)
+
+library(readr)
+
+library(here)
+
+library(stringr)
+```
+
+
+## Sourcing cleaning script
+
+This .R script was used to take in the raw data, clean the column names to make 
+them uniform in case. I then cleaned the data to make it appropriate for use in 
+analysis, which i then wrote as a .csv file into the "clean_data" folder
+
+```{r}
+source(here("cleaning_script_task_2.R"))
+```
+
+
+## Reading in clean cake data
+
+```{r}
+read_csv(here("clean_data/cake_clean.csv"))
+```
+
+
+# Analysis Questions
+
+## Which cake has the most cocoa in it?
+
+```{r}
+cake_clean %>% 
+  filter(ingredient == "cocoa") %>% 
+  slice_max(amount, with_ties = TRUE)
+```
+
+One Bowl Chocolate cake had the most cocoa in it with 10 tablespoons
+
+
+## For sponge cake, how many cups of ingredients are used in total?
+
+```{r}
+cake_clean %>% 
+  filter(cake == "sponge",
+         measure == "cup") %>% 
+  summarise(total_cups = sum(amount))
+```
+
+In total 3.5 cups of ingredients were used
+
+
+## How many ingredients are measured in teaspoons?
+
+```{r}
+cake_clean %>% 
+  filter(measure == "teaspoon") %>% 
+  summarise(teaspoon_ingredients = n_distinct(ingredient))
+```
+
+8 different ingredients are measured using teaspoons
+
+## Which cake has the most unique ingredients?
+
+```{r}
+cake_clean %>% 
+  group_by(cake) %>% 
+  summarise(n_ingredients = n()) %>% 
+  slice_max(n_ingredients, with_ties = TRUE)
+```
+
+Both babas au rhum cake, and one bowl chocolate cake have 11 ingredients
+
+
+## Which ingredients are used only once?
+
+```{r}
+cake_clean %>% 
+  group_by(ingredient) %>% 
+  summarise(n_uses = n()) %>% 
+  filter(n_uses == 1)
+```
+
+The ingredients that were only used once were: bananas, cream of tartar, crushed
+ice, dried currants, egg white, nutmeg, nuts, and zweibach.
+
+
+# Analysis summary
+
+Using the cake_clean data I first found that the cake with the most cocoa in it
+was the one bowl chocolate cake with 10 tablespoons.
+
+I then looked to see how many cups of ingredients were used to make the sponge
+cake and found that 3.5 cups of ingredients were used.
+
+I then found that in total 8 different ingredients in the data were measured 
+using tablespoons
+
+I looked to see which cakes used the most ingredients and found that both babas 
+au rhum cake, and one bowl chocolate cake have 11 ingredients
+
+Finally I looked into which ingredients were only used once across all the 
+different cakes and found that the ingredients that were only used once were: 
+bananas, cream of tartar, crushed ice, dried currants, egg white, nutmeg, nuts, 
+and zweibach.
+
+
+
+
+
+
+
+
