@@ -57,15 +57,15 @@ candy_2015_trimmed <- candy_2015 %>%
          year = timestamp,
          "100_grand_bar" = x100_grand_bar
          ) %>% 
-  mutate(year = substr(year, 1, 4)) %>% 
-  mutate(year = as.numeric(year)) %>% 
-  mutate(age = as.numeric(age)) %>% 
+  mutate(year = substr(year, 1, 4)) %>% # Turning date into just year
+  mutate(year = as.numeric(year)) %>% # Making year numeric
+  mutate(age = as.numeric(age)) %>% # Removing text entries for age
   mutate(country = NA, .after = going_tot) %>% 
-  filter(age <= 120) %>% 
+  filter(age <= 120) %>%              # Removing potential age outliers
   pivot_longer(cols = butterfinger:york_peppermint_patties,
                names_to = "candy_type",
                values_to = "opinion") %>% 
-  filter(is.na(opinion) == FALSE) 
+  filter(is.na(opinion) == FALSE) # Removing rows where no opinion was given
   
   
 
@@ -86,14 +86,15 @@ candy_2016_trimmed <- candy_2016 %>%
   mutate(year = substr(year, 1, 4)) %>% 
   mutate(year = as.numeric(year)) %>% 
   mutate(age = as.numeric(age)) %>% 
-  filter(age <= 120) %>% 
+  filter(age <= 120) %>%  
   relocate(age, .before = going_tot) %>% 
   pivot_longer(cols = "100_grand_bar":york_peppermint_patties,
                names_to = "candy_type",
                values_to = "opinion") %>% 
-  filter(is.na(opinion) == FALSE) %>% 
+  filter(is.na(opinion) == FALSE) %>%  
   mutate(country = str_to_lower(country)) %>% 
-  mutate(country = str_replace_all(country, "[[:punct:]]", ""))
+  mutate(country = str_replace_all(country, "[[:punct:]]", "")) # making ages 
+                                                  # more uniform for easy cleaning
 
 
 # Cleaning country column for 2016 data -----------------------------------
@@ -185,7 +186,8 @@ candy_2017_trimmed <-
 clean_candy <- bind_rows(candy_2015_trimmed, candy_2016_trimmed, candy_2017_trimmed)
   
 
-clean_candy <- clean_candy %>%
+clean_candy <- clean_candy %>% # Making the names of the different candy types uniform and uniting some under
+  # the same heading
   mutate(candy_type = recode(candy_type, "sweetums_a_friend_to_diabetes" = "sweetums",
          "sourpatch_kids_i_e_abominations_of_nature" = "sourpatch_kids",
          "licorice_not_black" = "licorice",
@@ -204,11 +206,10 @@ clean_candy <- clean_candy %>%
          "sandwich_sized_bags_filled_with_boo_berry_crunch" = "boo_berry_crunch"
          )) 
 
-# Making the names of the different candy types uniform and uniting some under
-# the same heading
 
 
-clean_candy <- clean_candy %>% 
+
+clean_candy <- clean_candy %>% # Removing anything that doesn't fall under the 'candy' category
   filter(
     !candy_type %in% c("brach_products_not_including_candy_corn",
                        "vials_of_pure_high_fructose_corn_syrup_for_main_lining_into_your_vein",
@@ -235,12 +236,12 @@ clean_candy <- clean_candy %>%
                        "minibags_of_chips"
                             ))
   
-# Removing anything that doesn't fall under the 'candy' category
+
 
 
 # Writing clean data to a .csv file for analysis --------------------------
 
 
-here()
 
-write_csv(clean_candy, file = "clean_data/clean_candy.csv")
+
+write_csv(clean_candy, file = here("clean_data/clean_candy.csv"))
