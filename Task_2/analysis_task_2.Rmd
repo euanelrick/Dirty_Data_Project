@@ -24,7 +24,8 @@ library(stringr)
 
 This .R script was used to take in the raw data, clean the column names to make 
 them uniform in case. I then cleaned the data to make it appropriate for use in 
-analysis, which i then wrote as a .csv file into the "clean_data" folder
+analysis. I did this by pivoting the data to make it long format, I joined the two tables to get the full ingredient names, I then selected the appropriate columns and dropped any columns with NAs as they were irrelevant to the analysis. I also made the columns all lowercase to keep the data uniform. 
+I then wrote the cleaned data as a .csv file into the "clean_data" folder
 
 ```{r}
 source(here("cleaning_script_task_2.R"))

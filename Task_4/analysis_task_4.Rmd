@@ -26,9 +26,9 @@ raw_data folder and bind them into one dataset to be used in analysis
 
 Each data set was very messy and required a lot of cleaning as seen in the 
 script. I had to make the columns uniform in all of them so they could be 
-binded correctly. And i removed any rows where an opinion hadnt been given to a 
+bound correctly. And i removed any rows where an opinion hadn't been given to a 
 candy. There was some particularly messy values in the countries
-column which required 'hard-coding'. When the tables were binded I removed all 
+column which required 'hard-coding'. When the tables were bound I removed all 
 the values in the candy_type column that weren't actually candy, and i combined
 certain candy types if they had been written differently across the three 
 years.
