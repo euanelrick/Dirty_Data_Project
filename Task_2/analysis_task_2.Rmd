@@ -77,13 +77,21 @@ cake_clean %>%
 ## Which cake has the most unique ingredients?
 
 ```{r}
+unique_ingredients <- cake_clean %>% 
+    group_by(ingredient) %>% 
+  summarise(n_uses = n()) %>% 
+  filter(n_uses == 1) %>% 
+  pull(ingredient)
+
+
 cake_clean %>% 
+  filter(ingredient %in% unique_ingredients) %>% 
   group_by(cake) %>% 
-  summarise(n_ingredients = n()) %>% 
+  summarise(n_ingredients = sum(n_distinct(ingredient))) %>% 
   slice_max(n_ingredients, with_ties = TRUE)
 ```
 
-Both babas au rhum cake, and one bowl chocolate cake have 11 ingredients
+Angel cake has the most unique ingredients with two unique ingredients
 
 
 ## Which ingredients are used only once?
@@ -110,8 +118,9 @@ cake and found that 3.5 cups of ingredients were used.
 I then found that in total 8 different ingredients in the data were measured 
 using tablespoons
 
-I looked to see which cakes used the most ingredients and found that both babas 
-au rhum cake, and one bowl chocolate cake have 11 ingredients
+I looked to see which cakes used the most unique ingredients and found that 
+angel cake has the most with two unique ingredients.
+
 
 Finally I looked into which ingredients were only used once across all the 
 different cakes and found that the ingredients that were only used once were: 

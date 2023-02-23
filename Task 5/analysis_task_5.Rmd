@@ -1,0 +1,156 @@
+---
+title: "Task 5 Analysis"
+output: html_notebook
+---
+
+## Load in packages
+
+```{r}
+library(naniar)
+
+library(tidyverse)
+
+library(janitor)
+
+library(readr)
+
+library(here)
+
+library(stringr)
+
+library(purrr)
+```
+
+
+## Sourcing cleaning script
+
+```{r}
+source(here("cleaning_script_task_5.R"))
+```
+
+## Reading in clean data .csv file
+
+```{r}
+read_csv(here("clean_data/rwa_clean.csv"))
+```
+
+
+# Analysis Questions
+
+## What’s the average RWA score for each gender?
+
+
+```{r}
+rwa_clean %>% 
+  group_by(gender) %>% 
+  summarise(average_rwa = mean(rwa_score, na.rm = TRUE))
+```
+The average score for females was 2.47, for males it was 3.12, and for those
+who put their gender as other the average score was 1.89
+
+
+## What’s the average RWA score for left handed people vs. right handed people.
+
+
+```{r}
+rwa_clean %>% 
+  group_by(hand) %>% 
+  summarise(average_rwa = mean(rwa_score, na.rm = TRUE))
+```
+
+For those who use both hands the average score was 3.18. And for those who are 
+right or left handed the average score was 2.86.
+
+
+## What’s the average family size for each type of childhood?
+
+```{r}
+rwa_clean %>% 
+  group_by(urban) %>% 
+  summarise(average_family_size = median(familysize, na.rm = TRUE))
+
+
+
+rwa_clean %>% 
+  group_by(urban) %>% 
+  summarise(average_family_size = mean(familysize, na.rm = TRUE))
+```
+
+For those who grew up in rural environments the median family size was 3 and the
+mean family size was 2.79. 
+For those who grew up in suburban environments the median family
+size was 2 and the mean family size was 2.62.
+For those who grew up in urban environments the median family size was 2 and the
+mean family size was 2.50.
+
+
+## What’s the average time to take the test for each education level?
+
+```{r}
+rwa_clean %>% 
+  group_by(education) %>% 
+  summarise(average_test_time = mean(testelapse, na.rm = TRUE))
+```
+
+For those with a graduate degree the average test time was 330 seconds.
+For those with a university degree the average time taken was 623 seconds.
+For those with whose highest education level was finishing high school the 
+average time taken was 512 seconds.
+And for those who did not finish high school the average time taken was 380
+seconds.
+
+
+
+## Create a plot of results of question 4.
+
+```{r}
+education_level_time_graph <- c(380, 512, 623, 330)
+
+barplot(education_level_time_graph, xlab = "Education Level",
+        ylab = "Seconds taken on test",
+        names.arg = c("Less than high school",
+                      "High School",
+                      "University Degree",
+                      "Graduate Degree"))
+```
+
+
+
+## What’s the average RWA score for people aged
+## - Under 18
+## - 18 to 25
+## - 26 to 40
+## - 41 to 60
+## - Over 60
+
+```{r}
+rwa_age_groups <- rwa_clean %>% 
+  mutate(age_group = case_when(
+    age < 18 ~ "Under 18",
+    age <= 25 ~ "18 to 25",
+    age <= 40 ~ "26 to 40",
+    age <= 60 ~ "41 to 60",
+    age > 60 ~ "Over 60"
+    
+  ))
+```
+
+
+```{r}
+rwa_age_groups %>% 
+  group_by(age_group) %>% 
+  summarise(avg_score = mean(rwa_score))
+```
+
+For those under 18 the average score was 3.36.
+For those between 18 and 25 the average score was 3.15.
+For those between 26 and 40 the average score was 2.61.
+for these between 41 and 60 the average score was 2.54.
+And for those over 60 the average scorw was 2.40.
+
+
+
+
+
+
+

@@ -36,7 +36,8 @@ rwa_trimmed <- raw_rwa %>%
          -screenw:-screenh,
          -engnat,
          -ip_country,
-         -religion:-married) %>% 
+         -religion:-married,
+         -major) %>% 
   mutate(
     gender = case_when(
     gender == 1 ~ "Male",
@@ -74,17 +75,47 @@ rwa_trimmed <- raw_rwa %>%
 # Function to fix reverse scores ------------------------------------------
 
 fix_reverse_score <- function(question) {
-  fixed_score <- (10 - question) %>% 
-  paste(fixed_score)
+  10 - question
   
 }
       
-      
-   
 
-rwa_corrected <- rwa_corrected %>% 
-  apply(MARGIN = 2, FUN = fix_reverse_score("q4"))
+rwa_reverse_scored <- rwa_trimmed %>% 
+  select(q4, q6, q8, q9, q11, q13, q15, q18, q20, q21)
 
   
+rwa_reverse_scored_fixed <- as.data.frame(
+  apply(rwa_reverse_scored, MARGIN = 2, FUN = fix_reverse_score))
 
 
+rwa_trimmed <- rwa_trimmed %>% 
+  select(-q4, -q6, -q8, -q9, -q11, -q13, -q15, -q18, -q20, -q21)
+
+  
+rwa_fixed <- rwa_reverse_scored_fixed %>% 
+  merge(rwa_trimmed, by = "row.names", all.x = TRUE) %>% 
+  select(-Row.names)
+
+questions <- rwa_fixed %>% 
+  select(q4:q22)
+
+rwa_fixed <- rwa_fixed %>% 
+ mutate(rwa_score <- rowMeans(questions))
+
+
+rwa_clean <- rwa_fixed %>% 
+  select(
+         -q4:-q22)
+
+
+
+
+rwa_clean <- rwa_clean %>% 
+  rename(rwa_score = `rwa_score <- rowMeans(questions)`) %>% 
+  relocate(rwa_score, .before = testelapse)
+
+
+
+# Write as .csv file ------------------------------------------------------
+
+write_csv(rwa_clean, "clean_data/rwa_clean.csv")
