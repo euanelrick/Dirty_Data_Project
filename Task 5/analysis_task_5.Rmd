@@ -24,6 +24,12 @@ library(purrr)
 
 ## Sourcing cleaning script
 
+With this cleaning script I deleted all the unnecessary columns. I changed the 
+values in the: gender, education, urban, and hand column to be characters rather
+than just numbers. I created a function to fix the columns that had been 
+reverse scored to make them correctly scored. I then calculated the mean for 
+all the questions and created a column for rwa_score for each person.
+
 ```{r}
 source(here("cleaning_script_task_5.R"))
 ```
@@ -149,8 +155,35 @@ for these between 41 and 60 the average score was 2.54.
 And for those over 60 the average scorw was 2.40.
 
 
+# Summary of Analysis
+
+I first looked to see hown scores were distributed across different genders and
+found that the average score for females was 2.47, for males it was 3.12, and 
+for those who put their gender as other the average score was 1.89.
+
+I looked into how scores were distributed by the handedness of the survey 
+participants and found that for those who use both hands the average score was 
+3.18. And for those who are right or left handed the average score was 2.86.
+
+I looked at what the average family size was for each childhood environment and
+found that for those who grew up in rural environments the median family size 
+was 3 and the mean family size was 2.79. for those who grew up in suburban 
+environments the median family size was 2 and the mean family size was 2.62. For 
+those who grew up in urban environments the median family size was 2 and the
+mean family size was 2.50.
 
 
+Then I looked at how long each different education level took to complete the 
+survery which I also plotted on a bar chart. My findings were that for those 
+with a graduate degree the average test time was 330 seconds. For those with a 
+university degree the average time taken was 623 seconds. For those with whose 
+highest education level was finishing high school the average time taken was 512 
+seconds. And for those who did not finish high school the average time taken was 
+380 seconds.
 
-
+Finally I looked to see how different age groups scored on the test and my 
+results showed that for those under 18 the average score was 3.36. for those 
+between 18 and 25 the average score was 3.15. For those between 26 and 40 the 
+average score was 2.61. For these between 41 and 60 the average score was 2.54.
+And for those over 60 the average score was 2.40.
 

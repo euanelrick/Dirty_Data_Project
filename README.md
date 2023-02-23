@@ -21,6 +21,9 @@ Task 3 is an analysis of different bird sightings.
 
 Task 4 is an analysis of popular Halloween candy.
 
+Task 5 is an analysis of how people scored on a survey which measured how much
+people align with right wing authoritarian beliefs.
+
 Each task folder follows the same structure:
 
 - A raw_data folder consisting of the original unaltered data sets
