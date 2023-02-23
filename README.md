@@ -11,7 +11,7 @@ messy data sets, clean them until they are appropriate for analysis, and then
 undertake analysis on the cleaned data.
 
 The project structure consists of three folders each representing a different
-task. In this case: Task 1, Task 3, and Task 4.
+task. In this case: Task 1, Task 2, Task 3, Task 4, and Task 5.
 
 Task 1 is an analysis of athletes data from decathlon competitions. 
 
@@ -22,7 +22,7 @@ Task 3 is an analysis of different bird sightings.
 Task 4 is an analysis of popular Halloween candy.
 
 Task 5 is an analysis of how people scored on a survey which measured how much
-people align with right wing authoritarian beliefs.
+they align with right wing authoritarian beliefs.
 
 Each task folder follows the same structure:
 
@@ -31,8 +31,8 @@ Each task folder follows the same structure:
 - A 'cleaning script' in which the raw data sets are cleaned to be used in 
 analysis.
 
-- A clean_data folder where the cleaned data from the cleaning script is outputted
-as a .csv file.
+- A clean_data folder where the cleaned data from the cleaning script is 
+outputted as a .csv file.
 
 - An analysis markdown file in which analysis is undertaken and the findings 
 are summarised at the end.
