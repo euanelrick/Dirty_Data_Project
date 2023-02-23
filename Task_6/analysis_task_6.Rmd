@@ -1,0 +1,147 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Loading in packages
+
+```{r}
+library(naniar)
+
+library(tidyverse)
+
+library(janitor)
+
+library(readr)
+
+library(here)
+
+library(stringr)
+
+library(purrr)
+
+```
+
+
+
+## Sourcing cleaning script
+
+In this cleaning script I cleaned the names of the raw data, then I removed 
+unnecessary columns. After that I removed the duplicate columns. Then I removed
+the "£" from the food spend column and made it numeric. Finally I made both the 
+sizes and gender of the dogs uniform in the way they were written, but still
+distinguishable from one another. I then wrote this as a .csv in the clean_data
+folder.
+
+```{r}
+source(here("cleaning_script_task_6.R"))
+```
+
+
+## Reading clean .csv file
+
+```{r}
+dogs_clean <-  read_csv(here("clean_data/dogs_survey_clean.csv"))
+
+```
+
+
+# Analysis Question
+
+
+## The client only counts a valid email address as one ending in ‘.com’. How 
+## many survey results have a valid email address.
+ 
+```{r}
+dogs_clean %>% 
+  filter(str_detect(email, pattern = "\\.com$"))
+```
+
+181 clients had valid email addresses
+
+
+## What’s the average amount spent on dog food for each dog size?
+
+```{r}
+dogs_clean %>% 
+  group_by(dog_size, na.rm = TRUE) %>% 
+  summarise(avg_food_spend = mean(food_spend, na.rm = TRUE))
+```
+
+For XS dogs the average spend was £57.30, for S dogs £51.51, for M dogs the
+average spend was £47.26, for L dogs the average spend was £51.84, and for XL
+dogs the average spend was £51.07.
+
+
+## For owners whose surname starts with a letter in the second half of the 
+alphabet (N onwards) what is the average age of their dog? 
+
+```{r}
+dogs_clean %>% 
+  filter(str_detect(last_name, "^(?i)[N-Z]")) %>% 
+  summarise(avg_age = mean(dog_age, na.rm = TRUE))
+  
+```
+
+The average age for dogs whose owners whose surnames start with letters in the 
+second half of the alphabet (N-Z) was 53.3 dog years.
+
+
+## The dog_age column is the age in dog years. If the conversion is 1 
+## human year = 6 dog years, then what is the average human age for dogs of each 
+## gender?
+
+```{r}
+dogs_clean %>% 
+  group_by(dog_gender, na.rm = TRUE) %>% 
+  summarise(avg_human_age = (mean(dog_age, na.rm = TRUE)/6))
+```
+
+The average age for female dogs was 8.0 human years, and for male dogs it was 
+8.5 human years
+
+
+## Create a plot of results of question 4.
+
+```{r}
+dog_age_graph <- c(8.0, 8.5)
+
+barplot(dog_age_graph, 
+        xlab = "Dog Gender",
+        ylab = "Age in Human Years",
+        names.arg = c("Female",
+                      "Male"))
+```
+
+
+
+# Summary of Analysis
+
+I first looked to see how many of the clients had valid email addresses for the
+system, which was determined by the email ending in ".com". From the data I 
+could see that 181 clients had valid email addresses.
+
+Then I looked to see what the average amount spent on dog food was, depending
+on which size category the dog fell under. From the data I could see that for 
+XS dogs the average spend was £57.30, for S dogs £51.51, for M dogs the
+average spend was £47.26, for L dogs the average spend was £51.84, and for XL
+dogs the average spend was £51.07.
+
+After I looked to what the average age in dog years was for clients whose last
+name started with letters which fell under the second half of the alphabet
+(N-Z). I found that the average age for dogs whose owners whose surnames start 
+with letters in the second half of the alphabet (N-Z) was 53.3 dog years.
+
+I finally looked into what the average age in human years of the dogs were 
+accoridng to their gender. I found that he average age for female dogs was 8.0 
+human years, and for male dogs it was 8.5 human years. I also did a plot of this
+data.
+
+
+
+
+
+
+
+
+
