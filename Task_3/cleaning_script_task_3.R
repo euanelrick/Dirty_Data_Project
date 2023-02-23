@@ -60,7 +60,7 @@ ships_trimmed <- seabirds_ships_data %>% # Keeping useful data, removing
 # Joining data together ---------------------------------------------------
 
 ships_birds <- birds_trimmed %>% 
-  left_join(ships_trimmed, by = "record_id")
+  left_join(ships_trimmed, by = "record_id") # joining ships data to birds data
 
 
 
@@ -82,9 +82,9 @@ ships_birds_clean <-  ships_birds %>%
 # Writing clean data as a .csv file ---------------------------------------
 
 
-here()
 
-write_csv(ships_birds_clean, file = "clean_data/ships_birds_clean.csv" )
+
+write_csv(ships_birds_clean, file = here("clean_data/ships_birds_clean.csv" ))
 
 
 

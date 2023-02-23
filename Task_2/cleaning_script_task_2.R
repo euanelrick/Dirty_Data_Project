@@ -29,25 +29,26 @@ cake_code <- read_csv(here("raw_data/cake/cake_ingredient_code.csv"))
 cake_ingredients_longer <- cake_ingredients %>% 
   pivot_longer(!Cake,
                names_to = "ingredient",
-               values_to = "amount")  
+               values_to = "amount")  # Pivoting longer to trim data
  
 
- cake_ingredients_longer <-  clean_names(cake_ingredients_longer)
+ cake_ingredients_longer <-  clean_names(cake_ingredients_longer) # cleaning names
 
  
  cake_ingredients_combined <- cake_ingredients_longer %>% 
-   full_join(cake_code, by = c("ingredient" = "code"))
+   full_join(cake_code, by = c("ingredient" = "code")) # joining both tables
 
 cake_clean <- cake_ingredients_combined %>% 
   select(cake, ingredient.y, amount, measure) %>% 
   rename("ingredient" = ingredient.y) %>% 
-  drop_na() 
+  drop_na() #Selecting columns i need, renaming ingredient.y, getting rid of 
+              # columns where the cake didnt use that ingredient
 
 cake_clean$cake <- cake_clean$cake %>% 
-  str_to_lower()
+  str_to_lower() # making lowercase
 
 cake_clean$ingredient <- cake_clean$ingredient %>% 
-  str_to_lower()
+  str_to_lower() #making lowercase
 
 
 
