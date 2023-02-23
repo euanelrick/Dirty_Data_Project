@@ -24,6 +24,8 @@ Task 4 is an analysis of popular Halloween candy.
 Task 5 is an analysis of how people scored on a survey which measured how much
 they align with right wing authoritarian beliefs.
 
+Task 6 is an analysis of pet dogs and their respective owners.
+
 Each task folder follows the same structure:
 
 - A raw_data folder consisting of the original unaltered data sets
